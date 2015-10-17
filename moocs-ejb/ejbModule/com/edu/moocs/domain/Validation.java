@@ -24,7 +24,6 @@ public class Validation implements Serializable{
 	private Validation_pk pk;
 	
 	public Validation() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	

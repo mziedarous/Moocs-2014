@@ -7,31 +7,31 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Comment_pk implements Serializable{
+public class Comment_pk implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private int courseID;
 	private int userid;
 	private String comm;
 	private Date date;
-	
+
 	public Comment_pk() {
-		// TODO Auto-generated constructor stub
 	}
-	
-	@Column(name="course_fk")
+
+	@Column(name = "course_fk")
 	public int getCourseID() {
 		return courseID;
 	}
+
 	public void setCourseID(int courseID) {
 		this.courseID = courseID;
 	}
-	
-	@Column(name="user_fk")
+
+	@Column(name = "user_fk")
 	public int getUserid() {
 		return userid;
 	}
@@ -39,8 +39,8 @@ public class Comment_pk implements Serializable{
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	
-	@Column(name="comment")
+
+	@Column(name = "comment")
 	public String getComm() {
 		return comm;
 	}
@@ -49,8 +49,7 @@ public class Comment_pk implements Serializable{
 		this.comm = comm;
 	}
 
-
-	@Column(name="date")
+	@Column(name = "date")
 	public Date getDate() {
 		return date;
 	}
@@ -95,8 +94,5 @@ public class Comment_pk implements Serializable{
 			return false;
 		return true;
 	}
-
-
-
 
 }

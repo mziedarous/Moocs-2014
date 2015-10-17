@@ -14,16 +14,14 @@ import javax.faces.event.PhaseId;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
-
-@ManagedBean(name="pmgBean")
+@ManagedBean(name = "pmgBean")
 @RequestScoped
 public class ProfilImageBean {
 	private StreamedContent image;
-    private String name;
-    
-	
+	private String name;
+
 	@PostConstruct
-	public void initModel() throws FileNotFoundException{
+	public void initModel() throws FileNotFoundException {
 		if (FacesContext.getCurrentInstance().getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
 			// So, we're rendering the view. Return a stub StreamedContent so
 			// that it will generate right URL.
@@ -31,18 +29,20 @@ public class ProfilImageBean {
 		} else {
 			// So, browser is requesting the image. Return a real
 			// StreamedContent with the image bytes.
-			InputStream stream = new BufferedInputStream(new FileInputStream("C:\\tmp\\zied.jpg"));
-	
-				setImage(new DefaultStreamedContent(stream));
-			
-			}
-		
+			InputStream stream = new BufferedInputStream(new FileInputStream(
+					"C:\\tmp\\zied.jpg"));
+
+			setImage(new DefaultStreamedContent(stream));
+
+		}
+
 		System.out.println(name);
 	}
-	
+
 	public StreamedContent getImage() {
 		return image;
 	}
+
 	public void setImage(StreamedContent image) {
 		this.image = image;
 	}

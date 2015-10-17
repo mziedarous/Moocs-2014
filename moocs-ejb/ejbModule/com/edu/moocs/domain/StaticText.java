@@ -9,25 +9,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_static_text")
-public class StaticText extends Contain implements Serializable{
+public class StaticText extends Contain implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String titleText;
-	
-	
-	
+
 	public StaticText() {
 	}
 
-	public StaticText( String typeContain,String titleText) {
-		super( typeContain);
-		this.titleText=titleText;
+	public StaticText(String typeContain, String titleText) {
+		super(typeContain);
+		this.titleText = titleText;
 	}
 
 	@Lob
-	@Column(name = "title_text", length = 512 , columnDefinition="TEXT")
+	@Column(name = "title_text", length = 512, columnDefinition = "TEXT")
 	public String getTitleText() {
 		return titleText;
 	}
@@ -40,8 +38,5 @@ public class StaticText extends Contain implements Serializable{
 	public String toString() {
 		return "StaticText [titleText=" + titleText + "]";
 	}
-
-	
-
 
 }

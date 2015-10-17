@@ -1,6 +1,5 @@
 package com.edu.moocs.domain;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -10,35 +9,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "t_answers")
-public class Answers implements Serializable{
-	
+public class Answers implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id ;
+	private int id;
 	private String annser1;
 	private String annser2;
 	private String annser3;
 	private int goodAnnser;
-	
-	//relationship attributes
-	private Question question; 
+
+	// relationship attributes
+	private Question question;
 
 	public Answers() {
 	}
- 
-	
-
-
-
-
-
-
-
-
 
 	public Answers(String annser1, String annser2, String annser3,
 			int goodAnnser) {
@@ -48,16 +38,6 @@ public class Answers implements Serializable{
 		this.annser3 = annser3;
 		this.goodAnnser = goodAnnser;
 	}
-
-
-
-
-
-
-
-
-
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,7 +50,7 @@ public class Answers implements Serializable{
 	}
 
 	@ManyToOne
-	@JoinColumn(name="question_fk")
+	@JoinColumn(name = "question_fk")
 	public Question getQuestion() {
 		return question;
 	}
@@ -79,34 +59,28 @@ public class Answers implements Serializable{
 		this.question = question;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
 		return "Answers [annser1=" + annser1 + ", annser2=" + annser2
 				+ ", annser3=" + annser3 + ", goodAnnser=" + goodAnnser + "]";
 	}
 
-
-
 	public String getAnnser1() {
 		return annser1;
 	}
+
 	public void setAnnser1(String annser1) {
 		this.annser1 = annser1;
 	}
 
-
 	public String getAnnser2() {
 		return annser2;
 	}
+
 	public void setAnnser2(String annser2) {
 		this.annser2 = annser2;
 	}
 
-	
 	public String getAnnser3() {
 		return annser3;
 	}
@@ -115,15 +89,11 @@ public class Answers implements Serializable{
 		this.annser3 = annser3;
 	}
 
-
 	public int getGoodAnnser() {
 		return goodAnnser;
 	}
-
 
 	public void setGoodAnnser(int goodAnnser) {
 		this.goodAnnser = goodAnnser;
 	}
 }
-
-	

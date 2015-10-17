@@ -32,10 +32,11 @@ public class Question implements Serializable {
 	private Quiz quiz;
 	private List<Answers> answers;
 	private Certification certification;
+
 	public Question() {
 	}
 
-	public Question(int numQuestion,String nameQuestion) {
+	public Question(int numQuestion, String nameQuestion) {
 		this.numQuestion = numQuestion;
 		this.nameQuestion = nameQuestion;
 	}
@@ -77,7 +78,8 @@ public class Question implements Serializable {
 		this.quiz = quiz;
 	}
 
-	@OneToMany(mappedBy = "question",fetch=FetchType.EAGER,cascade= {CascadeType.PERSIST , CascadeType.REMOVE})
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = {
+			CascadeType.PERSIST, CascadeType.REMOVE })
 	public List<Answers> getAnswers() {
 		return answers;
 	}
@@ -111,7 +113,7 @@ public class Question implements Serializable {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="certification_fk")
+	@JoinColumn(name = "certification_fk")
 	public Certification getCertification() {
 		return certification;
 	}

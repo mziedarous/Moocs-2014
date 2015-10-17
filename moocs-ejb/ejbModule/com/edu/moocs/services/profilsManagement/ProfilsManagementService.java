@@ -27,7 +27,6 @@ public class ProfilsManagementService implements ProfilsManagementServiceRemote,
      * Default constructor. 
      */
     public ProfilsManagementService() {
-        // TODO Auto-generated constructor stub
     }
     
 	@PersistenceContext

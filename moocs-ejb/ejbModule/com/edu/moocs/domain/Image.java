@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "t_image")
-public class Image extends Contain implements Serializable{
-	
+@Table(name = "t_image")
+public class Image extends Contain implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -18,23 +18,20 @@ public class Image extends Contain implements Serializable{
 
 	public Image() {
 	}
-	
-	
-	public Image(String typeContain,String titleImage) {
+
+	public Image(String typeContain, String titleImage) {
 		super(typeContain);
-		this.titleImage=titleImage;
-	}
-
-
-	@Column (name = "title_image")
-	public String getTitleImage() {
-		return titleImage;
-	}
-	
-	public void setTitleImage(String titleImage) {
 		this.titleImage = titleImage;
 	}
 
+	@Column(name = "title_image")
+	public String getTitleImage() {
+		return titleImage;
+	}
+
+	public void setTitleImage(String titleImage) {
+		this.titleImage = titleImage;
+	}
 
 	public String toString() {
 		return "Image [titleImage=" + titleImage + ", getId()=" + getId()
@@ -43,7 +40,5 @@ public class Image extends Contain implements Serializable{
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ "]";
 	}
-
-	
 
 }

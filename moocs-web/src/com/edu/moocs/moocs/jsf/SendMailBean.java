@@ -82,10 +82,9 @@ public class SendMailBean {
 	public void setSmtpServ(String smtpServ) {
 		this.smtpServ = smtpServ;
 	}
-	
-	public String goToSendMsg(){
-		
-		
+
+	public String goToSendMsg() {
+
 		return "/pages/admin/sendmail";
 	}
 

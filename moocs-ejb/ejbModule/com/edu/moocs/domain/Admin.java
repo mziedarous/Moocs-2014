@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "t_admin")
-public class Admin extends User implements Serializable{ 
-	
+@Table(name = "t_admin")
+public class Admin extends User implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -18,12 +18,13 @@ public class Admin extends User implements Serializable{
 
 	public Admin() {
 	}
-	
-	public Admin(String firstName, String lastName, Long cin,
-			Date dateOfBirth, String sexe, String mail, String login,
-			String password,String pseudo) {
-		super(firstName, lastName, cin, dateOfBirth, sexe, mail, login, password);
-		this.pseudo=pseudo;
+
+	public Admin(String firstName, String lastName, Long cin, Date dateOfBirth,
+			String sexe, String mail, String login, String password,
+			String pseudo) {
+		super(firstName, lastName, cin, dateOfBirth, sexe, mail, login,
+				password);
+		this.pseudo = pseudo;
 	}
 
 	public String getPseudo() {
@@ -45,6 +46,4 @@ public class Admin extends User implements Serializable{
 				+ getClass() + ", hashCode()=" + hashCode() + "]";
 	}
 
-	
-	
 }

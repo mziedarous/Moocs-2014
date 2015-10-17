@@ -20,27 +20,23 @@ import tn.edu.pdev.moocs.domain.User;
 import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
 import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
-
 @ManagedBean
 @SessionScoped
-public class CourseBean implements Serializable{
-	
+public class CourseBean implements Serializable {
+
 	@EJB
-	private CouseManagementLocal couseManagementLocal ;
-	
+	private CouseManagementLocal couseManagementLocal;
+
 	@EJB
 	private ProfilsManagementServiceLocal profilsManagementServiceLocal;
-	
-	
+
 	@ManagedProperty("#{chapterBean}")
 	private ChapterBean chapterBean;
 	@ManagedProperty("#{uploadBean}")
 	private FileUploadController fileUploadController;
-	
 
 	@ManagedProperty("#{profB}")
 	private ProfilManagedBean growlBean;
-
 
 	public ProfilManagedBean getGrowlBean() {
 		return growlBean;
@@ -50,49 +46,52 @@ public class CourseBean implements Serializable{
 		this.growlBean = growlBean;
 	}
 
-	private Course course ; 
+	private Course course;
 	private User user;
 	private Teacher teacher;
-	private List<Course>courses;
-	private boolean formDisplayed = false ;
+	private List<Course> courses;
+	private boolean formDisplayed = false;
 	private List<SelectItem> selectItemsForThematics;
 	private int selectedThematicId = -1;
-	private List<Course>filtredCourses;
+	private List<Course> filtredCourses;
 	private List<SelectItem> filterOptions;
 	private List<Thematic> thematics;
 	private boolean selected;
+
 	public CourseBean() {
 	}
-	
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		selected = true;
-		course  = new Course();
+		course = new Course();
 		user = new User();
 		teacher = new Teacher();
 		thematics = couseManagementLocal.findAllThematic();
 		selectItemsForThematics = new ArrayList<SelectItem>(thematics.size());
-		for(Thematic thematic:thematics){
-			selectItemsForThematics.add(new SelectItem(thematic.getId(),thematic.getNameThematic()));
+		for (Thematic thematic : thematics) {
+			selectItemsForThematics.add(new SelectItem(thematic.getId(),
+					thematic.getNameThematic()));
 		}
-		
-		filterOptions = new ArrayList<SelectItem>(thematics.size()+1);
+
+		filterOptions = new ArrayList<SelectItem>(thematics.size() + 1);
 		filterOptions.add(new SelectItem("", "select"));
-		for(Thematic thematic:thematics){
-			filterOptions.add(new SelectItem(thematic.getNameThematic(),thematic.getNameThematic()));
+		for (Thematic thematic : thematics) {
+			filterOptions.add(new SelectItem(thematic.getNameThematic(),
+					thematic.getNameThematic()));
 		}
-		
+
 	}
 
-	
-	public void createCourse(){
+	public void createCourse() {
 		String x = user.getLogin();
 		String y = user.getPassword();
-		
+
 		teacher = profilsManagementServiceLocal.findTeacher(x, y);
 
 		course.setTeacher(teacher);
-		course.setThematic(couseManagementLocal.findThematic(selectedThematicId));
+		course.setThematic(couseManagementLocal
+				.findThematic(selectedThematicId));
 		couseManagementLocal.updateCourse(course);
 		System.out.println(course);
 		growlBean.getTexts().add(course.getCourseName());
@@ -100,95 +99,95 @@ public class CourseBean implements Serializable{
 		courses = couseManagementLocal.findAllCourseByTeacher(teacher);
 		formDisplayed = false;
 	}
-	
-	public String doInitByTeacher(){
+
+	public String doInitByTeacher() {
 		String nav = "";
 		String x = user.getLogin();
 		String y = user.getPassword();
-		
+
 		System.out.println(x);
-		
+
 		teacher = profilsManagementServiceLocal.findTeacher(x, y);
-		
+
 		courses = couseManagementLocal.findAllCourseByTeacher(teacher);
 		nav = "/pages/teacher/course/manage";
 		return nav;
 	}
-	
-	public void doNew(){
+
+	public void doNew() {
 		course = new Course();
 		selectedThematicId = -1;
 		formDisplayed = true;
 	}
-	
-	public void doCancel(){
+
+	public void doCancel() {
 		course = new Course();
 		courses = couseManagementLocal.findAllCourseByTeacher(teacher);
 		formDisplayed = false;
-		
+
 	}
-	
-	
-	public void deleteCourse(){
+
+	public void deleteCourse() {
 		couseManagementLocal.deleteCourse(course);
 		courses = couseManagementLocal.findAllCourseByTeacher(teacher);
 		formDisplayed = true;
-		
+
 	}
-	public void onRowSelect(SelectEvent event){
+
+	public void onRowSelect(SelectEvent event) {
 		formDisplayed = true;
-		if(course.getThematic()!=null){
-			selectedThematicId=course.getThematic().getId();
-		}else {
+		if (course.getThematic() != null) {
+			selectedThematicId = course.getThematic().getId();
+		} else {
 			selectedThematicId = -1;
 		}
 	}
-	
-	public void onRowSelect2(SelectEvent event){
-		
-		selected=false;
+
+	public void onRowSelect2(SelectEvent event) {
+
+		selected = false;
 		chapterBean.setCourse(course);
 		fileUploadController.setCourse(course);
 	}
-	
-	public boolean findAllThematicForItem(){
-		
+
+	public boolean findAllThematicForItem() {
+
 		thematics = couseManagementLocal.findAllThematic();
-		
+
 		selectItemsForThematics = new ArrayList<SelectItem>(thematics.size());
-		for(Thematic thematic:thematics){
-			selectItemsForThematics.add(new SelectItem(thematic.getId(),thematic.getNameThematic()));
+		for (Thematic thematic : thematics) {
+			selectItemsForThematics.add(new SelectItem(thematic.getId(),
+					thematic.getNameThematic()));
 		}
-		
-		filterOptions = new ArrayList<SelectItem>(thematics.size()+1);
+
+		filterOptions = new ArrayList<SelectItem>(thematics.size() + 1);
 		filterOptions.add(new SelectItem("", "select"));
-		for(Thematic thematic:thematics){
-			filterOptions.add(new SelectItem(thematic.getNameThematic(),thematic.getNameThematic()));
+		for (Thematic thematic : thematics) {
+			filterOptions.add(new SelectItem(thematic.getNameThematic(),
+					thematic.getNameThematic()));
 		}
-		
+
 		return false;
 	}
-	
-	
-	public String back(){
+
+	public String back() {
 		String navigateTo = null;
 		navigateTo = "/pages/teacher/structure/structure.xhtml";
 		return navigateTo;
 	}
-	
-	
-	public String showAllthematic(){
-		
-		
-		teacher = profilsManagementServiceLocal.findTeacher(user.getLogin(), user.getPassword());
-		
+
+	public String showAllthematic() {
+
+		teacher = profilsManagementServiceLocal.findTeacher(user.getLogin(),
+				user.getPassword());
+
 		System.out.println(teacher);
-		
-		
+
 		courses = couseManagementLocal.findAllCourseByTeacher(teacher);
-		
+
 		return "/pages/teacher/structure/structure";
 	}
+
 	public Course getCourse() {
 		return course;
 	}
@@ -217,7 +216,8 @@ public class CourseBean implements Serializable{
 		return selectItemsForThematics;
 	}
 
-	public void setSelectItemsForThematics(List<SelectItem> selectItemsForThematics) {
+	public void setSelectItemsForThematics(
+			List<SelectItem> selectItemsForThematics) {
 		this.selectItemsForThematics = selectItemsForThematics;
 	}
 
@@ -268,12 +268,13 @@ public class CourseBean implements Serializable{
 	public void setChapterBean(ChapterBean chapterBean) {
 		this.chapterBean = chapterBean;
 	}
-	
+
 	public FileUploadController getFileUploadController() {
 		return fileUploadController;
 	}
 
-	public void setFileUploadController(FileUploadController fileUploadController) {
+	public void setFileUploadController(
+			FileUploadController fileUploadController) {
 		this.fileUploadController = fileUploadController;
 	}
 
@@ -302,5 +303,4 @@ public class CourseBean implements Serializable{
 		this.profilsManagementServiceLocal = profilsManagementServiceLocal;
 	}
 
-	
 }

@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Validation_pk implements Serializable{
+public class Validation_pk implements Serializable {
 
 	/**
 	 * 
@@ -14,12 +14,11 @@ public class Validation_pk implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int studentId;
 	private int certificationId;
-	
+
 	public Validation_pk() {
-		// TODO Auto-generated constructor stub
 	}
 
-	@Column(name="student_fk")
+	@Column(name = "student_fk")
 	public int getStudentId() {
 		return studentId;
 	}
@@ -28,7 +27,7 @@ public class Validation_pk implements Serializable{
 		this.studentId = studentId;
 	}
 
-	@Column(name="certification_fk")
+	@Column(name = "certification_fk")
 	public int getCertificationId() {
 		return certificationId;
 	}
@@ -61,7 +60,5 @@ public class Validation_pk implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

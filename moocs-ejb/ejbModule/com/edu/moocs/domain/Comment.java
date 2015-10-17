@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_comment")
-public class Comment implements Serializable{
+@Table(name = "t_comment")
+public class Comment implements Serializable {
 
 	/**
 	 * 
@@ -23,17 +23,13 @@ public class Comment implements Serializable{
 	private User user;
 	private String comm;
 
-
 	private Date date;
 	private Comment_pk pk;
-	
+
 	public Comment() {
-		// TODO Auto-generated constructor stub
 	}
 
-	
-
-
+	//
 
 	public Comment(Course course, User user, String comm) {
 		this.getPk().setCourseID(course.getId());
@@ -41,10 +37,6 @@ public class Comment implements Serializable{
 		this.getPk().setComm(comm);
 		this.getPk().setDate(new Date());
 	}
-
-
-
-
 
 	@ManyToOne
 	@JoinColumn(name = "course_fk", insertable = false, updatable = false)
@@ -55,8 +47,9 @@ public class Comment implements Serializable{
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-    @ManyToOne
-    @JoinColumn(name="user_fk", insertable = false, updatable = false)
+
+	@ManyToOne
+	@JoinColumn(name = "user_fk", insertable = false, updatable = false)
 	public User getUser() {
 		return user;
 	}
@@ -65,37 +58,26 @@ public class Comment implements Serializable{
 		this.user = user;
 	}
 
-
-
-
 	@EmbeddedId
 	public Comment_pk getPk() {
-		if(pk==null)
-		{
-			pk= new Comment_pk();
+		if (pk == null) {
+			pk = new Comment_pk();
 		}
 		return pk;
 	}
-
 
 	public void setPk(Comment_pk pk) {
 		this.pk = pk;
 	}
 
-
-    @Column(name="comment", insertable = false, updatable = false)
+	@Column(name = "comment", insertable = false, updatable = false)
 	public String getComm() {
 		return comm;
 	}
 
-
-
-
-
 	public void setComm(String comm) {
 		this.comm = comm;
 	}
-
 
 	@Override
 	public String toString() {
@@ -103,24 +85,13 @@ public class Comment implements Serializable{
 				+ comm + "]";
 	}
 
-
-
-
-	@Column(name="date", insertable = false, updatable = false)
+	@Column(name = "date", insertable = false, updatable = false)
 	public Date getDate() {
 		return date;
 	}
 
-
-
-
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
-	
-	
-	
+
 }

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_certification")
-public class Certification implements Serializable{
+public class Certification implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,20 +23,21 @@ public class Certification implements Serializable{
 	private int id;
 	private Date dateCertif;
 	private float timeCertif;
-	
+
 	private Thematic thematic;
 	private List<Question> questions;
-	
+
 	private List<Validation> validations;
-	
+
 	public Certification() {
 	}
 
 	public Certification(Date dateCertif, float timeCertif) {
-		
+
 		this.dateCertif = dateCertif;
 		this.timeCertif = timeCertif;
 	}
+
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -46,7 +47,7 @@ public class Certification implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	@Column(name = "date_certif")
 	public Date getDateCertif() {
 		return dateCertif;
@@ -55,6 +56,7 @@ public class Certification implements Serializable{
 	public void setDateCertif(Date dateCeritf) {
 		this.dateCertif = dateCeritf;
 	}
+
 	@Column(name = "time_certif")
 	public float getTimeCertif() {
 		return timeCertif;
@@ -68,8 +70,9 @@ public class Certification implements Serializable{
 		return "Certification [id=" + id + ", dateCeritf=" + dateCertif
 				+ ", timeCertif=" + timeCertif + "]";
 	}
-    
-	@OneToOne(mappedBy="certification",cascade= {CascadeType.PERSIST , CascadeType.REMOVE})
+
+	@OneToOne(mappedBy = "certification", cascade = { CascadeType.PERSIST,
+			CascadeType.REMOVE })
 	public Thematic getThematic() {
 		return thematic;
 	}
@@ -78,7 +81,7 @@ public class Certification implements Serializable{
 		this.thematic = thematic;
 	}
 
-	@OneToMany(mappedBy="certification")
+	@OneToMany(mappedBy = "certification")
 	public List<Question> getQuestions() {
 		return questions;
 	}
@@ -87,7 +90,7 @@ public class Certification implements Serializable{
 		this.questions = questions;
 	}
 
-	@OneToMany(mappedBy="certification")
+	@OneToMany(mappedBy = "certification")
 	public List<Validation> getValidations() {
 		return validations;
 	}
@@ -96,5 +99,4 @@ public class Certification implements Serializable{
 		this.validations = validations;
 	}
 
-	
 }

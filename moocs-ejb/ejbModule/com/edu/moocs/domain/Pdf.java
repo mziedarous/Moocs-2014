@@ -6,26 +6,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "t_pdf")
-public class Pdf extends Contain implements Serializable{
+public class Pdf extends Contain implements Serializable {
 
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String titlePdf;
-	
+
 	public Pdf() {
 	}
 
-	public Pdf( String typeContain,String titlePdf) {
-		super( typeContain);
-		this.titlePdf=titlePdf;
+	public Pdf(String typeContain, String titlePdf) {
+		super(typeContain);
+		this.titlePdf = titlePdf;
 	}
-
 
 	@Column(name = "title_pdf")
 	public String getTitlePdf() {
@@ -43,12 +40,5 @@ public class Pdf extends Contain implements Serializable{
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ "]";
 	}
-
-
-	
-
-
-	
-	
 
 }

@@ -20,45 +20,39 @@ import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLoca
 
 @ManagedBean
 @RequestScoped
-public class UserBean{
-
+public class UserBean {
 
 	private static final long serialVersionUID = 1L;
 
-	
-	private Student student ;
-	
+	private Student student;
+
 	@EJB
 	private ProfilsManagementServiceLocal profilsManagementServiceLocal;
-	
+
 	@ManagedProperty("#{authBean}")
 	private AuthenticationBean authBean;
-	
+
 	@ManagedProperty("#{profB}")
 	private ProfilManagedBean profilBean;
-	
+
 	@ManagedProperty("#{certifBean}")
 	private CertificationBean certificationBean;
-	
+
 	@ManagedProperty("#{findC}")
 	private StudentQuizBean studentQuizBean;
-	
+
 	@ManagedProperty("#{picturebean}")
-    private PictureUploadBean pictureUploadBean;
-
-
-
+	private PictureUploadBean pictureUploadBean;
 
 	@PostConstruct
-	public void initModel(){
+	public void initModel() {
 		student = new Student();
 	}
 
-	
-	public String saveStudent(){
-		
+	public String saveStudent() {
+
 		String navTo = null;
-		
+
 		profilsManagementServiceLocal.createUser(student);
 		authBean.setUser(student);
 		profilBean.setUser(student);
@@ -66,15 +60,12 @@ public class UserBean{
 		studentQuizBean.setUser(student);
 		studentQuizBean.setUser2(student);
 		pictureUploadBean.setUser(student);
-		
+
 		navTo = authBean.doLogin();
-		
+
 		return navTo;
 	}
-	
-	
-	
-	
+
 	public Student getStudent() {
 		return student;
 	}
@@ -83,35 +74,26 @@ public class UserBean{
 		this.student = student;
 	}
 
-
-	
-
 	public ProfilsManagementServiceLocal getProfilsManagementServiceLocal() {
 		return profilsManagementServiceLocal;
 	}
-
 
 	public void setProfilsManagementServiceLocal(
 			ProfilsManagementServiceLocal profilsManagementServiceLocal) {
 		this.profilsManagementServiceLocal = profilsManagementServiceLocal;
 	}
 
-
 	public AuthenticationBean getAuthBean() {
 		return authBean;
 	}
-
 
 	public void setAuthBean(AuthenticationBean authBean) {
 		this.authBean = authBean;
 	}
 
-	
-
 	public ProfilManagedBean getProfilBean() {
 		return profilBean;
 	}
-
 
 	public void setProfilBean(ProfilManagedBean profilBean) {
 		this.profilBean = profilBean;
@@ -121,49 +103,41 @@ public class UserBean{
 		return certificationBean;
 	}
 
-
 	public void setCertificationBean(CertificationBean certificationBean) {
 		this.certificationBean = certificationBean;
 	}
 
 	public void validate(FacesContext context, UIComponent arg1, Object value)
 			throws ValidatorException {
-		
+
 		String loginToValidate = (String) value;
-		if(loginToValidate == null|| loginToValidate.trim().isEmpty())
-		{
+		if (loginToValidate == null || loginToValidate.trim().isEmpty()) {
 			return;
 		}
-		
-		boolean loginInUse = profilsManagementServiceLocal.loginExists(loginToValidate);
-		if (loginInUse) {
-			throw new ValidatorException(new FacesMessage("login already in use!"));
-		}
-		
-	}
 
-	
+		boolean loginInUse = profilsManagementServiceLocal
+				.loginExists(loginToValidate);
+		if (loginInUse) {
+			throw new ValidatorException(new FacesMessage(
+					"login already in use!"));
+		}
+
+	}
 
 	public StudentQuizBean getStudentQuizBean() {
 		return studentQuizBean;
 	}
 
-
 	public void setStudentQuizBean(StudentQuizBean studentQuizBean) {
 		this.studentQuizBean = studentQuizBean;
 	}
-
 
 	public PictureUploadBean getPictureUploadBean() {
 		return pictureUploadBean;
 	}
 
-
 	public void setPictureUploadBean(PictureUploadBean pictureUploadBean) {
 		this.pictureUploadBean = pictureUploadBean;
 	}
-	
-	
-	
-	
+
 }

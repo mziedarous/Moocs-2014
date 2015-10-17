@@ -9,30 +9,27 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_Pdf_Course")
-public class PdfCourse implements Serializable{
+@Table(name = "t_Pdf_Course")
+public class PdfCourse implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private int id;
-    private String PdfName;
-    
-    private Course course;
-    
-    public PdfCourse() {
+	private String PdfName;
+
+	private Course course;
+
+	public PdfCourse() {
 	}
-    
-    
-    
-    public PdfCourse(String pdfName) {
+
+	public PdfCourse(String pdfName) {
 		this.PdfName = pdfName;
 	}
 
-
-    @Id
+	@Id
 	@GeneratedValue
 	public int getId() {
 		return id;
@@ -41,7 +38,7 @@ public class PdfCourse implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-    
+
 	public String getPdfName() {
 		return PdfName;
 	}
@@ -50,17 +47,13 @@ public class PdfCourse implements Serializable{
 		PdfName = pdfName;
 	}
 
-
-    @OneToOne(mappedBy="pdfCourse")
+	@OneToOne(mappedBy = "pdfCourse")
 	public Course getCourse() {
 		return course;
 	}
 
-
-
 	public void setCourse(Course course) {
 		this.course = course;
-	}	
-	
+	}
 
 }

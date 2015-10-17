@@ -32,7 +32,6 @@ public class CouseManagement implements CouseManagementRemote, CouseManagementLo
 	@PersistenceContext
 	private EntityManager em;
     public CouseManagement() {
-        // TODO Auto-generated constructor stub
     }
 	public Course createCourse(Course course) {
 		em.persist(course);

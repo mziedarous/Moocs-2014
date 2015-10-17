@@ -13,9 +13,9 @@ import tn.edu.pdev.moocs.domain.Thematic;
 import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
 import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
 
-@ManagedBean(name="Cbean")
+@ManagedBean(name = "Cbean")
 @SessionScoped
-public class CertificationCreationBean implements Serializable{
+public class CertificationCreationBean implements Serializable {
 
 	/**
 	 * 
@@ -24,45 +24,39 @@ public class CertificationCreationBean implements Serializable{
 
 	private Certification certification;
 	private Thematic thematic;
-	
+
 	@EJB
-	private ExamManagementServiceLocal examManagementServiceLocal; 
-	
-	
+	private ExamManagementServiceLocal examManagementServiceLocal;
+
 	@EJB
 	private CouseManagementLocal couseManagementLocal;
-	
-
 
 	@PostConstruct
-	public void init(){
+	public void init() {
 		certification = new Certification();
 		thematic = new Thematic();
 	}
 
-    public String doCreateCertification(){
-    	
-    	examManagementServiceLocal.createCertification(certification);
-    	
+	public String doCreateCertification() {
+
+		examManagementServiceLocal.createCertification(certification);
+
 		certification.setThematic(thematic);
-		
+
 		thematic.setCertification(certification);
 		examManagementServiceLocal.updateCertification(certification);
 		couseManagementLocal.updateThematic(thematic);
-    	
-    	return "/pages/homeTeacher";
-    }
-	
-	
+
+		return "/pages/homeTeacher";
+	}
+
 	public Certification getCertification() {
 		return certification;
 	}
 
-
 	public void setCertification(Certification certification) {
 		this.certification = certification;
 	}
-
 
 	public Thematic getThematic() {
 		return thematic;
@@ -70,6 +64,6 @@ public class CertificationCreationBean implements Serializable{
 
 	public void setThematic(Thematic thematic) {
 		this.thematic = thematic;
-	}	
-	
+	}
+
 }

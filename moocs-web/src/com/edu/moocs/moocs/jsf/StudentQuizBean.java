@@ -45,29 +45,22 @@ import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
 import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
 import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
-@ManagedBean(name="findC")
+@ManagedBean(name = "findC")
 @SessionScoped
-public class StudentQuizBean implements Serializable{
-
+public class StudentQuizBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
-
 	@EJB
 	private CouseManagementLocal managementLocal;
-	
+
 	@EJB
 	private ProfilsManagementServiceLocal profilsManagementServiceLocal;
-	
+
 	@EJB
 	private ExamManagementServiceLocal examManagementServiceLocal;
-	
-	
 
-	
-
-	private Course course ;
+	private Course course;
 	private Chapter chapter;
 	private boolean suscTest = false;
 	private boolean videoButtonView = false;
@@ -79,19 +72,19 @@ public class StudentQuizBean implements Serializable{
 	private User user2;
 	private List<Course> filteredCour;
 	private boolean isSelected;
-	private List<Chapter> chapters ;
-	private List<StaticText> staticTexts ;
-	private int i ;
+	private List<Chapter> chapters;
+	private List<StaticText> staticTexts;
+	private int i;
 	private List<Question> questions;
 	private List<Answers> answers;
 	private int ann1;
 	private int ann2;
 	private int ann3;
-	private Map<Integer,String> reponse;
+	private Map<Integer, String> reponse;
 	private List<String> answs;
 	private List<Integer> vals;
 	private int res;
-	private Student student2; 
+	private Student student2;
 	private Teacher teacher;
 	//
 	private int count;
@@ -100,27 +93,25 @@ public class StudentQuizBean implements Serializable{
 	private boolean startQuiz;
 	private boolean goTovalidate;
 
-
 	private boolean timeOut;
 	private Quiz quiz;
 	private boolean validateQuiz;
-	
+
 	//
-	
+
 	private StreamedContent content;
-	
-	//post comment
+
+	// post comment
 	private String comm;
 	private List<Comment> comments;
 
-	
 	@PostConstruct
-	public void initModel(){
+	public void initModel() {
 		course = new Course();
 		courses = null;
-		ann1 =0;
-		ann2 =0;
-		ann3 =0;
+		ann1 = 0;
+		ann2 = 0;
+		ann3 = 0;
 		isSelected = true;
 		user = new Student();
 		user2 = new User();
@@ -131,7 +122,7 @@ public class StudentQuizBean implements Serializable{
 		setVals(new ArrayList<Integer>());
 		setRes(0);
 		student2 = new Student();
-		comments=new ArrayList<Comment>(); 
+		comments = new ArrayList<Comment>();
 		//
 		count = 20;
 		count2 = 60;
@@ -142,317 +133,284 @@ public class StudentQuizBean implements Serializable{
 		validateQuiz = true;
 		goTovalidate = true;
 		teacher = new Teacher();
-		content =null;
+		content = null;
 		//
-		
-		
+
 	}
-	
-	public void initModel2(){
+
+	public void initModel2() {
 		setRes(0);
 		count = 20;
 		count2 = 60;
 		setCount3(20);
-		
+
 		setTimeOut(false);
 		startQuiz = true;
 		validateQuiz = true;
 		goTovalidate = true;
 		quiz = new Quiz();
 		vals = new ArrayList<Integer>();
-		i=0;
+		i = 0;
 	}
-	
+
 	public StudentQuizBean() {
 	}
-	
-	public String find(){
-		
-		String navigateTo ="";
 
-		courses=managementLocal.findCourseByName(course.getCourseName());
-		
-		if(courses!=null)
-		{
+	public String find() {
 
-			navigateTo="/pages/admin/resultFind?faces-redirect=true";
-			
-			
+		String navigateTo = "";
+
+		courses = managementLocal.findCourseByName(course.getCourseName());
+
+		if (courses != null) {
+
+			navigateTo = "/pages/admin/resultFind?faces-redirect=true";
+
 		}
-		if(courses.isEmpty())
-		{
-			navigateTo="/pages/admin/failSearch?faces-redirect=true";
-                      		
+		if (courses.isEmpty()) {
+			navigateTo = "/pages/admin/failSearch?faces-redirect=true";
+
 		}
-		
-		
+
 		return navigateTo;
 	}
-	
-	
-	public String findAllCourses(){
+
+	public String findAllCourses() {
 		String navTo = "";
-		
-		courses=managementLocal.findAllCourse();
-		
-		if(courses!=null){
-			navTo="/pages/admin/resultFind?faces-redirect=true";
+
+		courses = managementLocal.findAllCourse();
+
+		if (courses != null) {
+			navTo = "/pages/admin/resultFind?faces-redirect=true";
 		}
-		
+
 		return navTo;
 	}
-	
-	public String doLink(){
-		
+
+	public String doLink() {
+
 		String navigateTo = "";
-		String x = user.getLogin(); 
+		String x = user.getLogin();
 		String p = user.getPassword();
-		//System.out.println(x+" "+p);
-		
+		// System.out.println(x+" "+p);
+
 		Student student = profilsManagementServiceLocal.findStudent(x, p);
-		
-		List<Course> courses2 = profilsManagementServiceLocal.findCoursesByStudent(student);
+
+		List<Course> courses2 = profilsManagementServiceLocal
+				.findCoursesByStudent(student);
 		courses2.add(course);
 		pdfButtonView = true;
 		student.setCourses(courses2);
 		profilsManagementServiceLocal.updateUser(student);
 
-		
-		
 		return navigateTo;
 	}
 
-	
-    public boolean verifSub(){
-    	boolean val = false;
-    	
-		String x = user.getLogin(); 
+	public boolean verifSub() {
+		boolean val = false;
+
+		String x = user.getLogin();
 		String p = user.getPassword();
-	
-		
+
 		Student student = profilsManagementServiceLocal.findStudent(x, p);
-    	
-    	
-    	student2 = profilsManagementServiceLocal.verifSubs(student, course);
-    	
-    	if(student2 == null)
-    	{
-    		val = true;
-    		this.setPdfButtonView(false);
-    		this.setVideoButtonView(false);	
-    		this.setShowQuiz(false);
-    	}
-    	else
-    	{
-    		val = false;
-    		this.setPdfButtonView(true);
-    		this.setVideoButtonView(true);
-    		this.setShowQuiz(true);
-    	}
 
-    	
-   
-    	return	val;
-    		
+		student2 = profilsManagementServiceLocal.verifSubs(student, course);
 
-    	
-    	
-    }
-	
+		if (student2 == null) {
+			val = true;
+			this.setPdfButtonView(false);
+			this.setVideoButtonView(false);
+			this.setShowQuiz(false);
+		} else {
+			val = false;
+			this.setPdfButtonView(true);
+			this.setVideoButtonView(true);
+			this.setShowQuiz(true);
+		}
 
-    public String goToTheCourse(){
-      
-    	String navTo="";
+		return val;
 
-    	comments= managementLocal.showAllCommentOfThisCourse(course);
-    	
-    	//findC.staticTexts.get(findC.chapters.indexOf(item)).titleText
-    	
-    	try
-    	{
-    	StaticText val = staticTexts.get(0);
-    	navTo ="/pages/admin/course?faces-redirect=true";
-    	}
-    	
-    	catch(Exception ex)
-    	{
-			RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Remark !!", "this course is not yet ready!!"));
+	}
 
-    	}
-    	
-    	return navTo;
-    }
-    
-    
-    public void onRowSelect(SelectEvent event){
-    	
-    	
-    	isSelected = false;
+	public String goToTheCourse() {
+
+		String navTo = "";
+
+		comments = managementLocal.showAllCommentOfThisCourse(course);
+
+		// findC.staticTexts.get(findC.chapters.indexOf(item)).titleText
+
+		try {
+			StaticText val = staticTexts.get(0);
+			navTo = "/pages/admin/course?faces-redirect=true";
+		}
+
+		catch (Exception ex) {
+			RequestContext.getCurrentInstance().showMessageInDialog(
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Remark !!",
+							"this course is not yet ready!!"));
+
+		}
+
+		return navTo;
+	}
+
+	public void onRowSelect(SelectEvent event) {
+
+		isSelected = false;
 		chapters = managementLocal.findAllChapter(course);
 		staticTexts = managementLocal.findAllContain(course);
 
-    }
-    
- 
-    public boolean showAllTheContain()
-    {
-    	
-    	isSelected = false;
+	}
+
+	public boolean showAllTheContain() {
+
+		isSelected = false;
 		chapters = managementLocal.findAllChapter(course);
 		staticTexts = managementLocal.findAllContain(course);
-    	
-    	return false;
-    }
 
-	
-     public String goToQuiz(){
-    	 
-    	 String navTo="";
-    	 
-    	 if(chapter != null){
-    			questions = examManagementServiceLocal.findAllQuestionByChap(chapter);
-    		 navTo="/pages/admin/Quiz?faces-redirect=true";
-        
-    		 
-    	 }
-    	 
-    	 return navTo;
-    	 
-     }
-     
-     public String goToResult(){
-    	 
-    	 String navTo="";
-    	 
-        navTo = "/pages/admin/resultat?faces-redirect=true";
-    	 
-    	 return navTo;
-    	 
-     }
-     
-     public String goToQuizAgain(){
-    	 
-    	 String navTo="";
-    	 
-    	 if(chapter != null){
- 			questions = examManagementServiceLocal.findAllQuestionByChap(chapter);
- 		 navTo="/pages/admin/Quiz?faces-redirect=true";
-
- 	 }
-    	 return navTo;
-    	 
-     }
-     
-     
-public void onClikQ(){
-	
-	questions = examManagementServiceLocal.findAllQuestionByChap(chapter);
-	
-	if(questions == null){
-		System.out.println(0);
-		
-	}
-	if(questions !=null)
-	{
-
-		System.out.println(questions.size());
-		
-	}
-	
-}
-
-public void resultQuizs(SelectEvent event){
-	vals.add(i);
-
-}
-
-public void validate() {
-
-	int x = vals.size();
-	ann1 = vals.get(x - 3);
-	ann2 = vals.get(x - 2);
-	ann3 = vals.get(x - 1);
-
-
-	List<Answers> answers = examManagementServiceLocal
-			.finAllAnserwerByQuestion(questions.get(0));
-	List<Answers> answers2 = examManagementServiceLocal
-			.finAllAnserwerByQuestion(questions.get(1));
-	List<Answers> answers3 = examManagementServiceLocal
-			.finAllAnserwerByQuestion(questions.get(2));
-
-	int goodAnn1 = answers.get(0).getGoodAnnser();
-	int goodAnn2 = answers2.get(0).getGoodAnnser();
-	int goodAnn3 = answers3.get(0).getGoodAnnser();
-
-	if (goodAnn1 == ann1) {
-		res++;
-	}
-	if (goodAnn2 == ann2) {
-		res++;
-	}
-	if (goodAnn3 == ann3) {
-		res++;
+		return false;
 	}
 
-	
-	quiz = examManagementServiceLocal.findQuizByChapter(chapter);
+	public String goToQuiz() {
 
-	try{
-	int lastnote = examManagementServiceLocal.numberOfStudentPassedQuiz(student2, quiz).getNote();
-	
-	
-	if(res>lastnote){
-	examManagementServiceLocal.noteQuizStudent(student2, quiz, res);}
+		String navTo = "";
+
+		if (chapter != null) {
+			questions = examManagementServiceLocal
+					.findAllQuestionByChap(chapter);
+			navTo = "/pages/admin/Quiz?faces-redirect=true";
+
+		}
+
+		return navTo;
+
 	}
-	catch(NullPointerException exception){
-		examManagementServiceLocal.noteQuizStudent(student2, quiz, res);	
+
+	public String goToResult() {
+
+		String navTo = "";
+
+		navTo = "/pages/admin/resultat?faces-redirect=true";
+
+		return navTo;
+
 	}
-}
 
+	public String goToQuizAgain() {
 
-   
-public int onSeltQuiz(){
+		String navTo = "";
 
-	vals.add(i);
-	
-	return i;
-}
+		if (chapter != null) {
+			questions = examManagementServiceLocal
+					.findAllQuestionByChap(chapter);
+			navTo = "/pages/admin/Quiz?faces-redirect=true";
 
-public void select1(){
-	
-	vals.add(i);
-	
-	
-}
+		}
+		return navTo;
 
-public int select2(){
-	
-	i= 0;
-	select1();
-	
-	
-	return i;
-}
-public int select3(){
-	
-	vals.add(3);
-	
-	return 3;
-}
+	}
 
+	public void onClikQ() {
 
-public void doReturn(){
-	vals = new ArrayList<Integer>();
-	res = 0;
-}
+		questions = examManagementServiceLocal.findAllQuestionByChap(chapter);
 
+		if (questions == null) {
+			System.out.println(0);
 
+		}
+		if (questions != null) {
 
+			System.out.println(questions.size());
+
+		}
+
+	}
+
+	public void resultQuizs(SelectEvent event) {
+		vals.add(i);
+
+	}
+
+	public void validate() {
+
+		int x = vals.size();
+		ann1 = vals.get(x - 3);
+		ann2 = vals.get(x - 2);
+		ann3 = vals.get(x - 1);
+
+		List<Answers> answers = examManagementServiceLocal
+				.finAllAnserwerByQuestion(questions.get(0));
+		List<Answers> answers2 = examManagementServiceLocal
+				.finAllAnserwerByQuestion(questions.get(1));
+		List<Answers> answers3 = examManagementServiceLocal
+				.finAllAnserwerByQuestion(questions.get(2));
+
+		int goodAnn1 = answers.get(0).getGoodAnnser();
+		int goodAnn2 = answers2.get(0).getGoodAnnser();
+		int goodAnn3 = answers3.get(0).getGoodAnnser();
+
+		if (goodAnn1 == ann1) {
+			res++;
+		}
+		if (goodAnn2 == ann2) {
+			res++;
+		}
+		if (goodAnn3 == ann3) {
+			res++;
+		}
+
+		quiz = examManagementServiceLocal.findQuizByChapter(chapter);
+
+		try {
+			int lastnote = examManagementServiceLocal
+					.numberOfStudentPassedQuiz(student2, quiz).getNote();
+
+			if (res > lastnote) {
+				examManagementServiceLocal.noteQuizStudent(student2, quiz, res);
+			}
+		} catch (NullPointerException exception) {
+			examManagementServiceLocal.noteQuizStudent(student2, quiz, res);
+		}
+	}
+
+	public int onSeltQuiz() {
+
+		vals.add(i);
+
+		return i;
+	}
+
+	public void select1() {
+
+		vals.add(i);
+
+	}
+
+	public int select2() {
+
+		i = 0;
+		select1();
+
+		return i;
+	}
+
+	public int select3() {
+
+		vals.add(3);
+
+		return 3;
+	}
+
+	public void doReturn() {
+		vals = new ArrayList<Integer>();
+		res = 0;
+	}
 
 	public Course getCourse() {
 		return course;
 	}
+
 	public void setCourse(Course course) {
 		this.course = course;
 	}
@@ -535,7 +493,7 @@ public void doReturn(){
 	}
 
 	public void setI(int i) {
-		
+
 		this.i = i;
 	}
 
@@ -563,7 +521,6 @@ public void doReturn(){
 		this.answers = answers;
 	}
 
-
 	public List<String> getAnsws() {
 		return answs;
 	}
@@ -588,11 +545,11 @@ public void doReturn(){
 		this.studentConnect = studentConnect;
 	}
 
-	public Map<Integer,String> getReponse() {
+	public Map<Integer, String> getReponse() {
 		return reponse;
 	}
 
-	public void setReponse(Map<Integer,String> reponse) {
+	public void setReponse(Map<Integer, String> reponse) {
 		this.reponse = reponse;
 	}
 
@@ -636,8 +593,8 @@ public void doReturn(){
 		this.res = res;
 	}
 
-//
-	
+	//
+
 	public int getCount() {
 		return count;
 	}
@@ -662,7 +619,6 @@ public void doReturn(){
 			ann2 = vals.get(x - 2);
 			ann3 = vals.get(x - 1);
 
-	
 			List<Answers> answers = examManagementServiceLocal
 					.finAllAnserwerByQuestion(questions.get(0));
 			List<Answers> answers2 = examManagementServiceLocal
@@ -683,34 +639,36 @@ public void doReturn(){
 			if (goodAnn3 == ann3) {
 				res++;
 			}
-			
+
 			quiz = examManagementServiceLocal.findQuizByChapter(chapter);
 
-			
-			try{
-				int lastnote = examManagementServiceLocal.numberOfStudentPassedQuiz(student2, quiz).getNote();
-			if(res>lastnote || lastnote==0){
-			examManagementServiceLocal.noteQuizStudent(student2, quiz, res);}
-			
+			try {
+				int lastnote = examManagementServiceLocal
+						.numberOfStudentPassedQuiz(student2, quiz).getNote();
+				if (res > lastnote || lastnote == 0) {
+					examManagementServiceLocal.noteQuizStudent(student2, quiz,
+							res);
+				}
+
+			} catch (NullPointerException exception) {
+				examManagementServiceLocal.noteQuizStudent(student2, quiz, res);
 			}
-			catch(NullPointerException exception){
-				examManagementServiceLocal.noteQuizStudent(student2, quiz, res);	
-			}
-			
-				
-			FacesContext.getCurrentInstance().getExternalContext().redirect("resultat.jsf");
+
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("resultat.jsf");
 		}
 
 	}
+
 	public void increment3() {
 		count3--;
 		if (count3 <= 0) {
 			timeOut = true;
 			goTovalidate = false;
 		}
-		
+
 	}
-	
+
 	public boolean stopincrem() {
 
 		if (count <= 0) {
@@ -720,8 +678,7 @@ public void doReturn(){
 			return false;
 
 	}
-	
-	
+
 	public boolean stopincrem2() {
 
 		if (count2 <= 0) {
@@ -731,28 +688,23 @@ public void doReturn(){
 			return false;
 
 	}
+
 	public boolean stopincrem3() {
-		
+
 		if (count3 <= 0) {
 			count3 = 0;
 			return true;
 		} else
 			return false;
-		
-	}
-	
-	
 
-	public void timerIsOff(){
-		if(count <= 0){
+	}
+
+	public void timerIsOff() {
+		if (count <= 0) {
 			timeOut = false;
 		}
 	}
-	
-	
 
-
-	
 	public boolean isTimeOut() {
 		return timeOut;
 	}
@@ -776,6 +728,7 @@ public void doReturn(){
 	public void setStartQuiz(boolean startQuiz) {
 		this.startQuiz = startQuiz;
 	}
+
 	public int getCount2() {
 		return count2;
 	}
@@ -807,65 +760,57 @@ public void doReturn(){
 	public void setGoTovalidate(boolean goTovalidate) {
 		this.goTovalidate = goTovalidate;
 	}
-	
+
 	public StreamedContent getContent() throws FileNotFoundException {
-		
-		
-		try{
-	       InputStream stream = new BufferedInputStream(new FileInputStream("C:\\tmp\\"+course.getCourseName()+".pdf"));
-        	content=new DefaultStreamedContent(stream, "application/pdf", course.getCourseName()+".pdf");
 
-        	
-		return content;
-		}
-		catch(FileNotFoundException exception){
-		
-			
-		
-		
+		try {
+			InputStream stream = new BufferedInputStream(new FileInputStream(
+					"C:\\tmp\\" + course.getCourseName() + ".pdf"));
+			content = new DefaultStreamedContent(stream, "application/pdf",
+					course.getCourseName() + ".pdf");
+
+			return content;
+		} catch (FileNotFoundException exception) {
+
 			return null;
-			
+
 		}
-		
+
 	}
-	
 
-
-	
 	public void setContent(StreamedContent content) {
 		this.content = content;
 	}
-	
-	
+
 	// post Comment
-	public String valideComment() throws IOException{
-		
-		System.out.println("PC :"+course.getCourseName());
-		
-		user2=profilsManagementServiceLocal.findUserByNameAndLogin(user2.getLogin(), user2.getPassword());
-		
+	public String valideComment() throws IOException {
+
+		System.out.println("PC :" + course.getCourseName());
+
+		user2 = profilsManagementServiceLocal.findUserByNameAndLogin(
+				user2.getLogin(), user2.getPassword());
+
 		System.out.println(user2);
 		System.out.println(comm);
 		managementLocal.doPostComment(user2, course, comm);
-		
+
 		for (Comment comment : comments) {
 			System.out.println(comment);
 		}
-		
-		comments= managementLocal.showAllCommentOfThisCourse(course);
-		comm="";
+
+		comments = managementLocal.showAllCommentOfThisCourse(course);
+		comm = "";
 		FacesContext.getCurrentInstance().getExternalContext().redirect("");
 		return "";
 	}
 
-	
-	public boolean reloadListOfCommentOfCourse(){
-		
-		comments= managementLocal.showAllCommentOfThisCourse(course);
-		
+	public boolean reloadListOfCommentOfCourse() {
+
+		comments = managementLocal.showAllCommentOfThisCourse(course);
+
 		return false;
 	}
-	
+
 	public String getComm() {
 		return comm;
 	}
@@ -890,21 +835,24 @@ public void doReturn(){
 		this.comments = comments;
 	}
 
-	///
-    private String text;
-    
-    public String getText() {
-        return text;
-    }
-    public void setText(String text) {
-        this.text = text;
-    }
-    public void doNotif(){
-    	
-    }
-    public void save(ActionEvent actionEvent) {
+	// /
+	private String text;
 
-    }
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void doNotif() {
+
+	}
+
+	public void save(ActionEvent actionEvent) {
+
+	}
 
 	public Teacher getTeacher() {
 		return teacher;
@@ -914,10 +862,4 @@ public void doReturn(){
 		this.teacher = teacher;
 	}
 
-
-	
 }
-
-
-	
-
