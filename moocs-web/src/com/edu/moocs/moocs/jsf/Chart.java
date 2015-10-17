@@ -11,11 +11,6 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
-import tn.edu.pdev.moocs.domain.Quiz;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
-
 @ManagedBean(name = "grafic")
 @ViewScoped
 public class Chart implements Serializable {

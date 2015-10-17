@@ -21,19 +21,6 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
-import tn.edu.pdev.moocs.domain.Answers;
-import tn.edu.pdev.moocs.domain.Certification;
-import tn.edu.pdev.moocs.domain.NoteQuiz;
-import tn.edu.pdev.moocs.domain.Question;
-import tn.edu.pdev.moocs.domain.Quiz;
-import tn.edu.pdev.moocs.domain.Student;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.Thematic;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
-import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
-
 @ManagedBean(name = "certifBean")
 @SessionScoped
 public class CertificationBean implements Serializable {

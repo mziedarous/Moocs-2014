@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.edu.moocs.moocs.jsf.AuthenticationBean;
 
-import tn.edu.pdev.moocs.domain.Student;
-
 
 @WebFilter("/pages/admin/resultat.jsf")
 public class ResultatOfQuizSecurityFilter implements Filter {

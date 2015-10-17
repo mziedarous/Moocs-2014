@@ -13,13 +13,6 @@ import javax.faces.model.SelectItem;
 
 import org.primefaces.event.SelectEvent;
 
-import tn.edu.pdev.moocs.domain.Course;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.Thematic;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
-
 @ManagedBean
 @SessionScoped
 public class CourseBean implements Serializable {

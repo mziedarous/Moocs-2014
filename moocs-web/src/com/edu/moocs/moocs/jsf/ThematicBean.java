@@ -14,9 +14,6 @@ import javax.faces.validator.ValidatorException;
 
 import org.primefaces.event.SelectEvent;
 
-import tn.edu.pdev.moocs.domain.Thematic;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
-
 @ManagedBean
 @ViewScoped
 public class ThematicBean implements Serializable{

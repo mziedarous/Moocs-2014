@@ -9,19 +9,9 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
-
-import tn.edu.pdev.moocs.domain.Chapter;
-import tn.edu.pdev.moocs.domain.Course;
-import tn.edu.pdev.moocs.domain.Quiz;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
-import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
 @ManagedBean(name = "quizBean")
 @SessionScoped

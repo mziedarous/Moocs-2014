@@ -15,15 +15,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
-import javax.print.PrintServiceLookup;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-
-import tn.edu.pdev.moocs.domain.Student;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
 @ManagedBean(name = "profB")
 @SessionScoped

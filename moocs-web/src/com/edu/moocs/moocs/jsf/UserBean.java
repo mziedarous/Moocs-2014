@@ -1,22 +1,14 @@
 package com.edu.moocs.moocs.jsf;
 
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-
-import tn.edu.pdev.moocs.domain.Student;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
 @ManagedBean
 @RequestScoped

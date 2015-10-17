@@ -5,16 +5,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-
-import tn.edu.pdev.moocs.domain.Chapter;
-import tn.edu.pdev.moocs.domain.Contain;
-import tn.edu.pdev.moocs.domain.Course;
-import tn.edu.pdev.moocs.domain.StaticText;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
 
 
 @ManagedBean

@@ -9,13 +9,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import tn.edu.pdev.moocs.domain.Quiz;
-import tn.edu.pdev.moocs.domain.Student;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
-
 @ManagedBean(name = "teaBean")
 @SessionScoped
 public class TeacherBeen implements Serializable {

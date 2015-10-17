@@ -5,13 +5,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-
-import tn.edu.pdev.moocs.domain.Certification;
-import tn.edu.pdev.moocs.domain.Thematic;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
-import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
 
 @ManagedBean(name = "Cbean")
 @SessionScoped

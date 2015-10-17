@@ -15,35 +15,14 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.print.PrintServiceLookup;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
-import tn.edu.pdev.moocs.domain.Answers;
-import tn.edu.pdev.moocs.domain.Chapter;
-import tn.edu.pdev.moocs.domain.Comment;
-import tn.edu.pdev.moocs.domain.Contain;
-import tn.edu.pdev.moocs.domain.Course;
-import tn.edu.pdev.moocs.domain.Question;
-import tn.edu.pdev.moocs.domain.Quiz;
-import tn.edu.pdev.moocs.domain.StaticText;
-import tn.edu.pdev.moocs.domain.Student;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagement;
-import tn.edu.pdev.moocs.services.courseManagement.CouseManagementLocal;
-import tn.edu.pdev.moocs.services.examManagement.ExamManagementServiceLocal;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
 @ManagedBean(name = "findC")
 @SessionScoped

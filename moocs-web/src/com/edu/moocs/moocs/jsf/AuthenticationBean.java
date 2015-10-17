@@ -9,11 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import tn.edu.pdev.moocs.domain.Student;
-import tn.edu.pdev.moocs.domain.Teacher;
-import tn.edu.pdev.moocs.domain.User;
-import tn.edu.pdev.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
-
 @ManagedBean(name = "authBean")
 @SessionScoped
 public class AuthenticationBean implements Serializable {
