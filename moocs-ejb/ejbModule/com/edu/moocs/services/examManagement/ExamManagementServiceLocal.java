@@ -4,74 +4,93 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.edu.moocs.domain.Admin;
 import com.edu.moocs.domain.Answers;
 import com.edu.moocs.domain.Certification;
 import com.edu.moocs.domain.Chapter;
-import com.edu.moocs.domain.Contain;
-import com.edu.moocs.domain.Course;
-import com.edu.moocs.domain.Image;
 import com.edu.moocs.domain.NoteQuiz;
-import com.edu.moocs.domain.Pdf;
 import com.edu.moocs.domain.Question;
 import com.edu.moocs.domain.Quiz;
-import com.edu.moocs.domain.StaticText;
 import com.edu.moocs.domain.Student;
 import com.edu.moocs.domain.Teacher;
 import com.edu.moocs.domain.Thematic;
-import com.edu.moocs.domain.User;
-import com.edu.moocs.domain.Video;
 
 @Local
 public interface ExamManagementServiceLocal {
-	public void createCertification(Certification certification);
-	public void createQuiz(Quiz quiz);
-	public void createQuestion(Question question);
-	public void createAnswers(Answers answers);
 	
-	public void updateCertification(Certification certification);
-	public void updateQuiz(Quiz quiz);
-	public void updateQuestion(Question question);
-	public void updateAnswers(Answers answers);
-	
-	public Certification findCertification( int id);
-	public Quiz findQuiz(int id );
-	public Question findQuestion(int id);
-	public Answers findAnswers(int id);
-	public Quiz findQuizByName(String nameQuiz);
-	
-	
-	public void deleteCertification(Certification certification);
-	public void deleteQuiz(Quiz quiz);
-	public void deleteQuestion(Question question);
-	public void deleteAnswers(Answers answers);
-	
-	
-	public List<Certification> findAllCertification();
-	public List<Quiz> findAllQuiz();
-	public List<Question> findAllQuestion();
-	public List<Answers> findAllAnswers();
-	public List<Answers> getAnswersByQuestion(Question question);
+	void createCertification(Certification certification);
 
-	public List<Question> findAllQuestionByChap(Chapter chapter);
-	public List<Answers> finAllAnserwerByQuestion(Question question);
-	public Answers finAllAnserwerByQuestion2(Question question);
-	
-	
-	public void noteQuizStudent(Student student , Quiz quiz , int note);
-    public Quiz findQuizByChapter(Chapter chapter);
-    public List<Quiz>findQuizsByChapter(Chapter chapter);
-    public List<Quiz>findQuizsByTeacher(Teacher teacher);
-    
-    public Long numberOfQuizInThematic(Thematic thematic);
-    public List<Quiz> findQuizByThematic(Thematic thematic);
-    public NoteQuiz numberOfStudentPassedQuiz(Student student, Quiz quiz);
-    public List<Question> findAllQuestionByThematic(String thematic);
-    public List<Question> findAllQuestionByThematic2(String name);
-    public List<Question> findAllQuestionByCertification(Certification certification);
-    public boolean certifExist(String thematic);
-    public Certification finfCertificationByThematic(String thematic);
-    public Long findNumberOfQuiz(Teacher teacher);
-    
+	void createQuiz(Quiz quiz);
+
+	void createQuestion(Question question);
+
+	void createAnswers(Answers answers);
+
+	void updateCertification(Certification certification);
+
+	void updateQuiz(Quiz quiz);
+
+	void updateQuestion(Question question);
+
+	void updateAnswers(Answers answers);
+
+	Certification findCertification(int id);
+
+	Quiz findQuiz(int id);
+
+	Question findQuestion(int id);
+
+	Answers findAnswers(int id);
+
+	Quiz findQuizByName(String nameQuiz);
+
+	void deleteCertification(Certification certification);
+
+	void deleteQuiz(Quiz quiz);
+
+	void deleteQuestion(Question question);
+
+	void deleteAnswers(Answers answers);
+
+	List<Certification> findAllCertification();
+
+	List<Quiz> findAllQuiz();
+
+	List<Question> findAllQuestion();
+
+	List<Answers> findAllAnswers();
+
+	List<Answers> getAnswersByQuestion(Question question);
+
+	List<Question> findAllQuestionByChap(Chapter chapter);
+
+	List<Answers> finAllAnserwerByQuestion(Question question);
+
+	Answers finAllAnserwerByQuestion2(Question question);
+
+	void noteQuizStudent(Student student, Quiz quiz, int note);
+
+	Quiz findQuizByChapter(Chapter chapter);
+
+	List<Quiz> findQuizsByChapter(Chapter chapter);
+
+	List<Quiz> findQuizsByTeacher(Teacher teacher);
+
+	Long numberOfQuizInThematic(Thematic thematic);
+
+	List<Quiz> findQuizByThematic(Thematic thematic);
+
+	NoteQuiz numberOfStudentPassedQuiz(Student student, Quiz quiz);
+
+	List<Question> findAllQuestionByThematic(String thematic);
+
+	List<Question> findAllQuestionByThematic2(String name);
+
+	List<Question> findAllQuestionByCertification(Certification certification);
+
+	boolean certifExist(String thematic);
+
+	Certification finfCertificationByThematic(String thematic);
+
+	Long findNumberOfQuiz(Teacher teacher);
 
 }

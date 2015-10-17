@@ -8,23 +8,15 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.edu.moocs.domain.Admin;
 import com.edu.moocs.domain.Answers;
 import com.edu.moocs.domain.Certification;
 import com.edu.moocs.domain.Chapter;
-import com.edu.moocs.domain.Contain;
-import com.edu.moocs.domain.Course;
-import com.edu.moocs.domain.Image;
 import com.edu.moocs.domain.NoteQuiz;
-import com.edu.moocs.domain.Pdf;
 import com.edu.moocs.domain.Question;
 import com.edu.moocs.domain.Quiz;
-import com.edu.moocs.domain.StaticText;
 import com.edu.moocs.domain.Student;
 import com.edu.moocs.domain.Teacher;
 import com.edu.moocs.domain.Thematic;
-import com.edu.moocs.domain.User;
-import com.edu.moocs.domain.Video;
 
 /**
  * Session Bean implementation class MoocsService

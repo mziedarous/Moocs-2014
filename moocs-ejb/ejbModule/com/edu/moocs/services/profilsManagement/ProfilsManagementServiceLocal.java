@@ -13,30 +13,44 @@ import com.edu.moocs.domain.User;
 
 @Local
 public interface ProfilsManagementServiceLocal {
-	
-	public User createUser(User user);
-	
-	public void updateUser(User user);
-	
-	public Student findStudent(int id);
-	public Teacher findTeacher(int id);
-	public Admin findAdmin(int id);
-	
-	public void deleteUser(User user);
-	
-	public List<Student> findAllStudent();
-	public List<Teacher> findAllTeacher();
-	public List<Admin> findAllAdmin();
-	public List<User> findAllUser();
 
-	User autehnticate(String login,String password);
+	User createUser(User user);
+
+	void updateUser(User user);
+
+	Student findStudent(int id);
+
+	Teacher findTeacher(int id);
+
+	Admin findAdmin(int id);
+
+	void deleteUser(User user);
+
+	List<Student> findAllStudent();
+
+	List<Teacher> findAllTeacher();
+
+	List<Admin> findAllAdmin();
+
+	List<User> findAllUser();
+
+	User autehnticate(String login, String password);
+
 	boolean loginExists(String login);
-	public Student findStudent(String login, String pass);
-	public Teacher findTeacher(String login, String pass);
+
+	Student findStudent(String login, String pass);
+
+	Teacher findTeacher(String login, String pass);
+
 	Student verifSubs(Student student, Course course);
+
 	List<Course> findCoursesByStudent(Student student);
+
 	List<Quiz> findQuizByTeacher(int id);
-	List<Student> findStudentInQuiz(Quiz quiz); 
+
+	List<Student> findStudentInQuiz(Quiz quiz);
+
 	int noteDeEtudent(Student student, Quiz quiz);
+
 	User findUserByNameAndLogin(String login, String passe);
 }

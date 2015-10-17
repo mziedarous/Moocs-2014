@@ -1,14 +1,10 @@
 package com.edu.moocs.config;
 
-import java.util.Date;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
-import com.edu.moocs.domain.Admin;
-import com.edu.moocs.domain.Student;
 import com.edu.moocs.domain.Teacher;
 import com.edu.moocs.services.profilsManagement.ProfilsManagementServiceLocal;
 
