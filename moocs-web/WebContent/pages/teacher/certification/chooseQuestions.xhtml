@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			<ui:define name="pageContent">
+			<h:form>
+<p:dataTable 
+            id="quess"
+			value="#{certifBean.questions}" 
+			var="ques"
+			
+			rowKey="#{ques.id}"
+			paginator="true"
+			paginatorPosition="bottom"
+		   
+			selectionMode="multiple"
+			selection="#{certifBean.questions2}"
+						
+			>
+			
+			  <f:facet name="header">
+			  <h:outputText value="SELECT QUESTIONS : Ctrl (Control) key works; press and hold it down." />
+			  </f:facet>
+			
+
+		
+			<p:column headerText="question" >
+
+			
+			<h:outputText value="#{ques.nameQuestion}" />
+			
+			</p:column>
+			
+ 
+         <f:facet name="footer">
+         <p:commandButton value="affect" actionListener="#{certifBean.show()}" action="#{certifBean.goToTeacherHome()}"/>
+         </f:facet>
+         
+			</p:dataTable>
+
+         
+
+         
+          
+			</h:form>
+			</ui:define>		
+			
+</ui:composition>

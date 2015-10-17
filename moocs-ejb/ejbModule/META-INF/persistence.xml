@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="tn.edu.esprit.piDev.MOOCs">
+		<jta-data-source>java:/mysqlDS</jta-data-source>
+		<class>com.edu.moocs.domain.Admin</class>
+		<class>com.edu.moocs.domain.Answers</class>
+		<class>com.edu.moocs.domain.Certification</class>
+		<class>com.edu.moocs.domain.Chapter</class>
+		<class>com.edu.moocs.domain.Comment</class>
+		<class>com.edu.moocs.domain.Comment_pk</class>
+		<class>com.edu.moocs.domain.Contain</class>
+		<class>com.edu.moocs.domain.Course</class>
+		<class>com.edu.moocs.domain.Image</class>
+		<class>com.edu.moocs.domain.NoteQuiz</class>
+		<class>com.edu.moocs.domain.NoteQuiz_pk</class>
+		<class>com.edu.moocs.domain.Pdf</class>
+		<class>com.edu.moocs.domain.PdfCourse</class>
+		<class>com.edu.moocs.domain.Question</class>
+		<class>com.edu.moocs.domain.Quiz</class>
+		<class>com.edu.moocs.domain.StaticText</class>
+		<class>com.edu.moocs.domain.Student</class>
+		<class>com.edu.moocs.domain.Teacher</class>
+		<class>com.edu.moocs.domain.Thematic</class>
+		<class>com.edu.moocs.domain.User</class>
+		<class>com.edu.moocs.domain.Validation</class>
+		<class>com.edu.moocs.domain.Validation_pk</class>
+		<class>com.edu.moocs.domain.Video</class>
+	
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
+	</persistence-unit>
+</persistence>

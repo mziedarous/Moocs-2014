@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name=""></ui:define>
+	<ui:define name="res">
+		<h:form rendered="#{profB.findTeacher()}" />
+		<h:form rendered="#{profB.findTeacher2()}" />
+		<h:form>
+
+			<p:panelGrid columns="2">
+			
+				<p:panel>
+					<h:panelGrid columns="1">
+						<p:graphicImage id="product_image" value="#{profB.ht()}"
+							cache="false" height="173" width="148">
+							<f:param name="name" value="#{profB.teacher.login}" />
+						</p:graphicImage>
+						<p:commandButton value="change" oncomplete="uploadFileDlgW.show()"
+							styleClass="editor-picture" />
+					</h:panelGrid>
+					<p:dialog id="uploadFileDlg" header="upload a picture"
+						widgetVar="uploadFileDlgW" position="top" modal="true"
+						resizable="false" styleClass="upload-dialog">
+
+						<h:form>
+
+
+							<p:fileUpload fileUploadListener="#{picturebean.upload}"
+								sizeLimit="1000000000" description="Select Images"
+								onsuccess="uploadFileDlgW.hide()" />
+
+
+
+						</h:form>
+					</p:dialog>
+
+
+				</p:panel>
+
+				<p:panel header=" Welcome #{profB.teacher.login}" footer="© Esprit">
+					<p:panelGrid columns="2">
+						<h:outputText value="First Name" />
+						<h:outputText value="#{profB.teacher.firstName}" />
+						<h:outputText value="Last Name" />
+						<h:outputText value="#{profB.teacher.lastName}" />
+						<h:outputText value="Cin/Passport" />
+						<h:outputText value="#{profB.teacher.cin}" />
+						<h:outputText value="Date of birth" />
+						<h:outputText value="#{profB.teacher.dateOfBirth}" />
+						<h:outputText value="Sexe" />
+						<h:outputText value="#{profB.teacher.sexe}" />
+						<h:outputText value="Mail" />
+						<h:outputText value="#{profB.teacher.mail}" />
+						<h:outputText value="Education" />
+						<h:outputText value="#{profB.teacher.diploma}" />
+					</p:panelGrid>
+					<f:facet name="footer">
+						
+						<p:spacer width="5" height="5" />
+						<p:commandButton value="See resultat"
+							action="#{teaBean.doSeeResult()}" />
+						<p:spacer width="30" height="30" />
+						<p:commandButton action="#{certifBean.showThematicByTeacher()}"
+							value="prepare certification" />
+					
+	
+						
+					</f:facet>
+
+				</p:panel>
+				
+					
+					
+					
+					
+				
+					
+				
+					
+					
+								
+
+			</p:panelGrid>
+	
+		
+      
+		<br />
+		
+		<p:commandButton value="See statistics" action="#{grafic.goToStat()}"/>	
+		
+
+		</h:form>
+
+
+
+
+	</ui:define>
+</ui:composition>

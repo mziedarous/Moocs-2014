@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="pageContent">
+		<h:form id="registe">
+
+			<p:panel header=" Register Now" footer="© Esprit">
+				<h:panelGrid columns="3">
+
+					<h:outputText value="First name" />
+					<p:inputText id="fn" value="#{userBean.student.firstName}"
+						required="true" requiredMessage="Your first name is required"
+						validatorMessage="your first name is unacceptable">
+						<f:validateLength maximum="20" />
+						<f:ajax event="blur" render="fn_msg" execute="@this" />
+					</p:inputText>
+					<p:message for="fn" id="fn_msg" styleClass="error" />
+
+
+
+					<h:outputText value="Last name" />
+					<p:inputText id="ln" value="#{userBean.student.lastName}"
+						required="true" requiredMessage="Your last name is required"
+						validatorMessage="your last name is unacceptable">
+						<f:ajax event="blur" render="ln_msg" execute="@this" />
+						<f:validateLength maximum="20" />
+					</p:inputText>
+					<p:message for="ln" id="ln_msg" styleClass="error" />
+
+					<h:outputText value="Cin/Passport" />
+					<p:inputText id="cin" value="#{userBean.student.cin}"
+						required="true" requiredMessage="Your CIN/Passport is required"
+						converterMessage="your must put the a correct CIN/PASSPORT"
+						validatorMessage="Your CIN/PASSPORT must be between 6 and 12">
+						<f:convertNumber integerOnly="true" />
+						<f:validateLength minimum="6" maximum="12" />
+						<f:ajax event="blur" render="cin_msg" execute="@this" />
+					</p:inputText>
+					<p:message for="cin" id="cin_msg" styleClass="error" />
+
+					<h:outputText value="Date of birth" />
+					<p:calendar id="paging" value="#{userBean.student.dateOfBirth}"
+						pattern="MM/dd/yyyy HH:mm"
+						converterMessage="EXEMPLE : 04/26/2014 16:22" required="true"
+						requiredMessage="Your date of birth is required" />
+
+
+					<p:message for="paging" styleClass="error" />
+
+
+
+					<h:selectOneRadio id="gender" value="#{userBean.student.sexe}"
+						required="true" requiredMessage="Please make a choice!">
+
+						<f:selectItem itemValue="Women" itemLabel="Women" />
+						<f:selectItem itemValue="Man" itemLabel="Man" />
+
+					</h:selectOneRadio>
+
+					<p:message for="gender" id="gender_msg" styleClass="error" />
+
+
+					<br />
+					<h:outputText value="E-mail" />
+					<p:inputText id="email" value="#{userBean.student.mail}"
+						validatorMessage="invalid email!">
+						<f:ajax event="blur" execute="@this" render="msg_email" />
+						<f:validateRegex
+							pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" />
+
+					</p:inputText>
+					<p:message for="email" id="msg_email" styleClass="error" />
+					<h:outputText value="Login" />
+					<p:inputText id="log" value="#{userBean.student.login}"
+						required="true" requiredMessage="Your login name is required"
+						validator="#{userBean.validate}"
+						validatorMessage="worning in this login ">
+						<f:validateLength minimum="3" maximum="16" />
+						<f:ajax event="blur" execute="@this" render="log_msg" />
+					</p:inputText>
+					<p:message for="log" id="log_msg" styleClass="error" />
+
+					<h:outputText value="Password" />
+					<h:inputSecret id="pass" value="#{userBean.student.password}"
+						required="true" requiredMessage="Your password is required"
+						validatorMessage="your login must be between 4 and 14 character">
+						<f:ajax event="blur" render="pass_msg" execute="@this" />
+						<f:validateLength minimum="4" maximum="14" />
+					</h:inputSecret>
+					<p:message for="pass" id="pass_msg" styleClass="error" />
+
+					<h:outputText value="Education" />
+					<p:inputText id="edu" value="#{userBean.student.education}"
+						required="true" requiredMessage="Your education is required">
+						<f:ajax event="blur" render="edu_msg" execute="@this" />
+					</p:inputText>
+					<p:message for="edu" id="edu_msg" styleClass="error" />
+
+				</h:panelGrid>
+
+				<h:commandButton value="sign up" action="#{userBean.saveStudent()}"/>
+				
+				
+
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

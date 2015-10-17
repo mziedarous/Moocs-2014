@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  template="/template/template.xhtml" 
+	  xmlns:p="http://primefaces.org/ui">
+	  
+	  <ui:define name="pageTitle">login</ui:define>
+	  
+	  <ui:define name="pageContent">
+			
+	  		
+	  		<h:form id="login_form">
+	  		<p:panel header=" Log in" footer="© Esprit">
+	  			<h:panelGrid columns="2">
+	  		
+	  				<h:outputText value="login" />
+	  				<h:inputText value="#{authBean.user.login}"  />
+	  				<h:outputText value="Password" />
+	  				<h:inputSecret value="#{authBean.user.password}" />
+	  				<h:commandButton   action="#{authBean.doLogin}" value="log in" id="login_submit" >
+	  				
+	  				   <f:setPropertyActionListener target="#{findC.user}" value="#{authBean.user}"/>
+	  				   <f:setPropertyActionListener target="#{profB.user}" value="#{authBean.user}"/>
+	  				    <f:setPropertyActionListener target="#{courseBean.user}" value="#{authBean.user}"/>
+	  				    <f:setPropertyActionListener target="#{teaBean.user}" value="#{authBean.user}"/>
+	  				    <f:setPropertyActionListener target="#{certifBean.user}" value="#{authBean.user}"/>
+	  				    <f:setPropertyActionListener target="#{picturebean.user}" value="#{authBean.user}"/>
+	  				     <f:setPropertyActionListener target="#{findC.user2}" value="#{authBean.user}"/>
+	  				     <f:setPropertyActionListener target="#{quizBean.user}" value="#{authBean.user}"/>
+	  				</h:commandButton>
+	  				<p:message for="login_submit" styleClass="error"/>
+	  				
+	  			</h:panelGrid>
+	  			</p:panel>
+	  		</h:form>
+	  </ui:define>
+	  
+</ui:composition >

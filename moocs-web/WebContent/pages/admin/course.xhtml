@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="res">
+
+		<h1 align="center" style="color: #003761;" class="title ui-widget-header ui-corner-all">
+			#{findC.course.courseName}</h1>
+
+
+
+<p:panel footer="Esprit 2013-2014">
+
+<h:form rendered="#{findC.showAllTheContain()}"/>
+
+<ui:repeat value="#{findC.chapters}" var="item" >
+		
+	<h:form>
+	
+
+	
+	
+		<h3 style="color: red;" >#{item.name} 
+
+<h:form rendered="#{authBean.userType.equals('student')}">
+<h:form rendered="#{findC.verifSub()}"/>
+	<h:form rendered="#{findC.showQuiz}">
+		<p:commandButton  action="#{findC.goToQuiz()}" value="Quiz" rendered="#{item.hasQuiz}" actionListener="#{findC.initModel2()}" >
+		
+		<f:setPropertyActionListener target="#{findC.chapter}" value="#{item}"></f:setPropertyActionListener>
+		</p:commandButton>
+       </h:form>
+       
+</h:form>	       
+	 </h3> 
+		</h:form>	
+		
+		<br />
+		
+		<h:outputText value="#{findC.staticTexts.get(findC.chapters.indexOf(item)).titleText}" escape="false"/>
+		
+		<h5 >
+		
+		
+		</h5> 
+		
+ 
+</ui:repeat>
+</p:panel>
+<br />
+<p:panel header="All comment"  rendered="#{authBean.loggedOut}">
+<h:form rendered="#{findC.reloadListOfCommentOfCourse()}"/>
+		<p:scrollPanel style="width:582px;height:200px" >
+		  <ui:repeat var="comm" value="#{findC.comments}">
+		
+		  <h3 style="color: green;"> #{comm.user.login} :</h3>
+		  <h5> #{comm.comm}</h5>
+		  		<p:separator id="customSeparator" style="width:580px;height:2px" />
+		  
+		  </ui:repeat>
+	
+		
+		</p:scrollPanel>
+		
+		
+		
+<h:form>
+<p:panel header="post your comment">
+<p:inputTextarea rows="10" cols="60" value="#{findC.comm}"/>
+<p:spacer width="50" height="10" /> 
+<p:commandButton action="#{findC.valideComment()}" value="Comment" />
+</p:panel>
+</h:form>
+</p:panel>
+	</ui:define>
+	<ui:define name="nav">
+
+
+		<h:form rendered="#{authBean.userType.equals('student')}">
+
+
+			<h:form rendered="#{findC.verifSub()}">
+			<p:panel header="Subscribe to this course">
+				<h:panelGrid columns="1">
+				<h:commandButton value="subscribe" action="#{findC.doLink}" />
+				
+				</h:panelGrid>
+             </p:panel>
+			</h:form>
+
+
+			<h:form rendered="#{findC.pdfButtonView}">
+			 <p:panel header="Options for subscribe" footer="">	
+				<h:panelGrid columns="1" >
+					
+					<p:commandButton action="#{sendMailBean.goToSendMsg()}" value="Send Message"/>
+					<p:commandButton id="downloadLink" value="Download" ajax="false"
+        icon="ui-icon-arrowthichk-s">
+                 <p:fileDownload value="#{findC.content}"/>
+                </p:commandButton>
+				</h:panelGrid>
+			</p:panel>	
+			</h:form>
+
+
+		</h:form>
+
+
+
+	</ui:define>
+
+</ui:composition>

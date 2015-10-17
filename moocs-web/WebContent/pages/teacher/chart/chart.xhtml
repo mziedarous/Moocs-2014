@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			<ui:define name="pageContent">
+			
+			
+			<p:panel header="Chart Quiz by teacher" >
+							<h:form>
+                    <p:barChart id="stacked" value="#{grafic.categoryModel}" legendPosition="ne" style="height:300px"
+                                title="statistics" stacked="true" barMargin="50" min="0" max="10"/>
+                 </h:form>
+			
+			</p:panel>
+			
+			</ui:define>		
+
+</ui:composition>

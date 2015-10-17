@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                
+            <h:form id="details">
+            	
+				<p:dataTable rendered="#{not empty courseBean.courses}" 
+				             value="#{courseBean.courses}" 
+				             var="cour" 
+							 rows="10"
+							 rowKey="#{cour.id}"
+							 paginator="true"
+							 paginatorPosition="bottom"				             
+				             filteredValue="#{courseBean.filtredCourses}"
+						   	 selectionMode="single"
+							 selection="#{courseBean.course}"
+							 widgetVar="courTabW"	
+				             >
+				             
+			  <f:facet name="header">
+			  <h:outputText value="select the course that do you want to modify" />
+			  </f:facet>				             
+				             
+	<p:ajax event="rowSelect" listener="#{courseBean.onRowSelect2}" update=":details" />     
+				             
+
+					<p:column headerText="course name">
+	
+						<h:outputText value="#{cour.courseName}" />
+					</p:column>
+					
+					<p:column headerText="thematic name">
+
+						<h:outputText value="#{cour.thematic.nameThematic}" />
+					</p:column>
+				
+			
+					
+					<f:facet name="footer">
+				       <p:commandButton value="select" action="#{chapterBean.goToDefine()}" disabled="#{courseBean.selected}"/>
+
+				
+				<p:commandButton value="Upload Course" oncomplete="uploadFileDlgW.show()" disabled="#{courseBean.selected}"/>			
+					</f:facet>
+				</p:dataTable>
+				
+
+									<p:dialog id="uploadFileDlg"  widgetVar="uploadFileDlgW" position="top" modal="true" resizable="false">
+							
+							<p:messages showDetail="true"/>
+	           <p:fileUpload fileUploadListener="#{uploadBean.upload}"  sizeLimit="1000000000" description="Select Images" onsuccess="uploadFileDlgW.hide()"/>
+				
+					</p:dialog>	
+				
+			</h:form>
+</ui:composition>

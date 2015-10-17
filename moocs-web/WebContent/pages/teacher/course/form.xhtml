@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+             
+             
+             <h:form rendered="#{courseBean.findAllThematicForItem()}"/>  
+                <p:panel id="details" header="courses details" visible="#{courseBean.formDisplayed}">
+				<h:form rendered="#{courseBean.formDisplayed}">
+					<h:panelGrid columns="3">
+						<h:outputText value="Course Title" />
+						<p:inputText id="couseId" value="#{courseBean.course.courseName}" required="true" requiredMessage="Course is required"/>
+						
+						<p:message for="couseId" styleClass="error"/>
+						
+						<h:outputText value="Thematic" />
+						
+						<p:selectOneMenu id="thsId" value="#{courseBean.selectedThematicId}">
+							<f:selectItem itemValue="-1" itemLabel="choose one.."/>
+							<f:selectItems value="#{courseBean.selectItemsForThematics}"/>
+						</p:selectOneMenu>
+						
+						<h:message for="thsId"/>
+						
+						<p:commandButton actionListener="#{courseBean.doCancel}" value="cancel" update=":details"/>
+						
+						<h:panelGrid columns="2">
+							<p:commandButton actionListener="#{courseBean.createCourse}" value="save" update=":master :details" oncomplete="courTabW.filter();"/>
+						</h:panelGrid>
+						
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+</ui:composition>

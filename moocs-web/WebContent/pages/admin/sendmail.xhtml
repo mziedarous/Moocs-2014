@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			<ui:define name="pageTitle"></ui:define>		
+			<ui:define name="pageContent">
+			
+<h:form id="form" style="height: 500px;">  
+    
+    <p:growl id="growl" sticky="true" showDetail="true"/> 
+    <p:messages id="messages">  
+        <p:effect type="pulsate" event="load" delay="1000">  
+            <f:param name="mode" value="'show'" />  
+        </p:effect>  
+    </p:messages> 
+                   
+     <p:panel id="panel" style="width: 100%;text-align: center;"  header="send mail">
+                        
+                   <h:panelGrid columns="3" cellpadding="3" >
+                   <h:outputText value="From:" /> 
+                   <p:inputText value="#{sendMailBean.compte}" id="email" required="true" requiredMessage="UserName is required" validatorMessage="#{sendMailBean.compte}n'est pas un compte Gmail">
+                   
+     <f:validateRegex  pattern="[\w\.-]*[a-zA-Z0-9_]+@gmail.com"></f:validateRegex>  
+
+    </p:inputText>
+
+    <p:message for="email" />
+
+                   <h:outputText value="Password :" /> 
+                   <p:password id="pwd1"  value="#{sendMailBean.motpasse}"/>
+                   
+                 
+      <h:outputText value="" /> 
+             
+                   <p:commandButton value="Validate"   onsuccess="dlg.show()"  />
+                     
+                   </h:panelGrid>
+                   </p:panel>  
+    
+     <p:dialog id="dialog" header="Send Mail" widgetVar="dlg" showEffect="bounce" hideEffect="explode" width="550" modal="true" resizable="true" > 
+    
+    
+                        
+                   <h:panelGrid id="display" columns="2" cellpadding="3" > 
+                   <h:outputText value="to :" /> 
+                
+                   <p:inputText value="#{sendMailBean.to}" id="to" required="true"  validatorMessage="#{sendMailBean.to}   n'est pas un compte valide">
+                   
+     <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /> 
+
+    </p:inputText>
+
+    <p:message for="to" />
+                   
+                    <p:spacer width="20px"/>
+                    
+                   <h:outputText value="Sujbect :" /> 
+                   <h:inputText value="#{sendMailBean.subject}"/>
+                   
+                   
+                   
+                 <h:outputText value="message :" /> 
+                
+          
+                 
+                 <p:inputTextarea rows="10" cols="60" value="#{sendMailBean.message}"/>
+                
+                 
+                 <p:spacer width="20px"/>
+                 <p:commandButton value="send" action="#{sendMailBean.sendMail()}" update="messages"  onsuccess="dlg.hide();"/>
+                    
+                   </h:panelGrid>
+                 </p:dialog>         
+
+    
+      
+              
+        </h:form> 
+
+	    
+	 
+			</ui:define>
+</ui:composition>

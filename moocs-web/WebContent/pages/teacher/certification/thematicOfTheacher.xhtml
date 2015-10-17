@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+                	
+			<ui:define name="pageContent">
+			
+		<h:form>	
+			<ui:repeat var="th2" value="#{certifBean.thematics2}">
+			
+			
+			<p:panel header="#{th2.nameThematic}">
+			<h:commandButton action="#{certifBean.showQuestionByThematic()}" value="perpare" >
+			<f:setPropertyActionListener target="#{certifBean.thematic}" value="#{th2}"/>
+			</h:commandButton>
+			</p:panel>
+			
+			</ui:repeat>
+		</h:form>	
+			</ui:define>		
+			
+</ui:composition>
