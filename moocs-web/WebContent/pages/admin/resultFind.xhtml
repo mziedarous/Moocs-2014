@@ -1,76 +1,41 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageTitle"> all courses </ui:define>		
-			<ui:define name="pageContent">
-	
-			<h:form id="details">
-			<p:dataTable 
-			value="#{findC.courses}" 
-			var="cour"
-			rows="10"
-			rowKey="#{cour.id}"
-			paginator="true"
-			paginatorPosition="bottom"
-		    filteredValue="#{findC.filteredCour}"
-			selectionMode="single"
-			selection="#{findC.course}"
-			widgetVar="courTabW"			
-			>
-			
-			  <f:facet name="header">
-			  <h:outputText value="Go to course the that you find it" />
-			  </f:facet>
-			
-			
-	
-		
-			<p:ajax event="rowSelect" listener="#{findC.onRowSelect}" update=":details" />
-		
-		
-			<p:column headerText="course" filterBy="#{cour.courseName}" filterMatchMode="contains">
-
-			
-			<h:outputText value="#{cour.courseName}" />
-			
-			</p:column>
-			
-			
-			<p:column headerText="Thematic" filterBy="#{cour.thematic.nameThematic}" filterMatchMode="contains">
-
-			
-			<h:outputText value="#{cour.thematic.nameThematic}" />
-			
-			</p:column>			
-			
-  			<p:column headerText="Teacher" filterBy="#{cour.teacher.lastName}" filterMatchMode="contains">
-
-			<h:outputText value="#{cour.teacher.lastName} #{cour.teacher.firstName}" />
-			
-			</p:column>        
-            
-        
-<f:facet name="footer">
-
-        <p:commandButton action="#{findC.goToTheCourse()}" value="GO TO" icon="ui-icon-search" disabled="#{findC.selected}" >
-            	<f:setPropertyActionListener target="#{certifBean.affCertif}" value="false"/>
-            	
-            </p:commandButton>
-              
-
-</f:facet>
-            
-         
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle"> all courses </ui:define>
+	<ui:define name="pageContent">
+		<h:form id="details">
+			<p:dataTable value="#{findC.courses}" var="cour" rows="10"
+				rowKey="#{cour.id}" paginator="true" paginatorPosition="bottom"
+				filteredValue="#{findC.filteredCour}" selectionMode="single"
+				selection="#{findC.course}" widgetVar="courTabW">
+				<f:facet name="header">
+					<h:outputText value="Go to course the that you find it" />
+				</f:facet>
+				<p:ajax event="rowSelect" listener="#{findC.onRowSelect}"
+					update=":details" />
+				<p:column headerText="course" filterBy="#{cour.courseName}"
+					filterMatchMode="contains">
+					<h:outputText value="#{cour.courseName}" />
+				</p:column>
+				<p:column headerText="Thematic"
+					filterBy="#{cour.thematic.nameThematic}" filterMatchMode="contains">
+					<h:outputText value="#{cour.thematic.nameThematic}" />
+				</p:column>
+				<p:column headerText="Teacher" filterBy="#{cour.teacher.lastName}"
+					filterMatchMode="contains">
+					<h:outputText
+						value="#{cour.teacher.lastName} #{cour.teacher.firstName}" />
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton action="#{findC.goToTheCourse()}" value="GO TO"
+						icon="ui-icon-search" disabled="#{findC.selected}">
+						<f:setPropertyActionListener target="#{certifBean.affCertif}"
+							value="false" />
+					</p:commandButton>
+				</f:facet>
 			</p:dataTable>
-
-         
-    
-         
-          
-			</h:form>
-			</ui:define>
+		</h:form>
+	</ui:define>
 </ui:composition>

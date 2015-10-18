@@ -1,21 +1,25 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
-                	
-				<p:panel id="details" header="Thematic Details" visible="#{thematicBean.fromDisplayed}">
-				<h:form rendered="#{thematicBean.fromDisplayed}">
-					<h:panelGrid columns="3">
-						<h:outputText value="Name Thematic" />
-						<p:inputText id="thm" value="#{thematicBean.thematic.nameThematic}" validator="#{thematicBean.validate}" required="true" requiredMessage="Thematic is required"/>
-						<p:message for="thm" styleClass="error"/>
-						<p:commandButton action="#{thematicBean.doCancel}" value="cancel" update=":details" />
-						<h:panelGrid columns="2">
-							<p:commandButton actionListener="#{thematicBean.createThematic}" value="save" update=":master :details" oncomplete="catTabW.filter();"/>
-						</h:panelGrid>
-						
-					</h:panelGrid>
-				</h:form>
-				</p:panel>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<p:panel id="details" header="Thematic Details"
+		visible="#{thematicBean.fromDisplayed}">
+		<h:form rendered="#{thematicBean.fromDisplayed}">
+			<h:panelGrid columns="3">
+				<h:outputText value="Name Thematic" />
+				<p:inputText id="thm" value="#{thematicBean.thematic.nameThematic}"
+					validator="#{thematicBean.validate}" required="true"
+					requiredMessage="Thematic is required" />
+				<p:message for="thm" styleClass="error" />
+				<p:commandButton action="#{thematicBean.doCancel}" value="cancel"
+					update=":details" />
+				<h:panelGrid columns="2">
+					<p:commandButton actionListener="#{thematicBean.createThematic}"
+						value="save" update=":master :details"
+						oncomplete="catTabW.filter();" />
+				</h:panelGrid>
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
 </ui:composition>

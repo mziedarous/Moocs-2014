@@ -3,15 +3,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
-
 	<ui:define name=""></ui:define>
 	<ui:define name="res">
 		<h:form rendered="#{profB.findTeacher()}" />
 		<h:form rendered="#{profB.findTeacher2()}" />
 		<h:form>
-
 			<p:panelGrid columns="2">
-			
 				<p:panel>
 					<h:panelGrid columns="1">
 						<p:graphicImage id="product_image" value="#{profB.ht()}"
@@ -24,22 +21,13 @@
 					<p:dialog id="uploadFileDlg" header="upload a picture"
 						widgetVar="uploadFileDlgW" position="top" modal="true"
 						resizable="false" styleClass="upload-dialog">
-
 						<h:form>
-
-
 							<p:fileUpload fileUploadListener="#{picturebean.upload}"
 								sizeLimit="1000000000" description="Select Images"
 								onsuccess="uploadFileDlgW.hide()" />
-
-
-
 						</h:form>
 					</p:dialog>
-
-
 				</p:panel>
-
 				<p:panel header=" Welcome #{profB.teacher.login}" footer="© Esprit">
 					<p:panelGrid columns="2">
 						<h:outputText value="First Name" />
@@ -58,44 +46,17 @@
 						<h:outputText value="#{profB.teacher.diploma}" />
 					</p:panelGrid>
 					<f:facet name="footer">
-						
 						<p:spacer width="5" height="5" />
 						<p:commandButton value="See resultat"
 							action="#{teaBean.doSeeResult()}" />
 						<p:spacer width="30" height="30" />
 						<p:commandButton action="#{certifBean.showThematicByTeacher()}"
 							value="prepare certification" />
-					
-	
-						
 					</f:facet>
-
 				</p:panel>
-				
-					
-					
-					
-					
-				
-					
-				
-					
-					
-								
-
 			</p:panelGrid>
-	
-		
-      
-		<br />
-		
-		<p:commandButton value="See statistics" action="#{grafic.goToStat()}"/>	
-		
-
+			<br />
+			<p:commandButton value="See statistics" action="#{grafic.goToStat()}" />
 		</h:form>
-
-
-
-
 	</ui:define>
 </ui:composition>

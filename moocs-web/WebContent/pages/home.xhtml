@@ -1,70 +1,53 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageTitle"></ui:define>		
-			<ui:define name="pageContent">
-			
-	 <h:form rendered="#{profB.findUser()}"/>
-<p:panel>   
-	 <h:panelGrid columns="2">
-	 	    
-	 	    <p:panel>
-	 	    
-	 	  					<h:panelGrid  columns="1" >
-						<p:graphicImage id="product_image" value="#{profB.ht()}" cache="false" height="173" width="148">
-    							<f:param name="name" value="#{profB.student.login}" />
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle"></ui:define>
+	<ui:define name="pageContent">
+		<h:form rendered="#{profB.findUser()}" />
+		<p:panel>
+			<h:panelGrid columns="2">
+				<p:panel>
+					<h:panelGrid columns="1">
+						<p:graphicImage id="product_image" value="#{profB.ht()}"
+							cache="false" height="173" width="148">
+							<f:param name="name" value="#{profB.student.login}" />
 						</p:graphicImage>
-						<p:commandButton value="change" oncomplete="uploadFileDlgW.show()" styleClass="editor-picture"/>
+						<p:commandButton value="change" oncomplete="uploadFileDlgW.show()"
+							styleClass="editor-picture" />
 					</h:panelGrid>
-										<p:dialog id="uploadFileDlg" header="upload a picture" widgetVar="uploadFileDlgW" position="top" modal="true" resizable="false" styleClass="upload-dialog">
-							
-<h:form >
-   
-
-           <p:fileUpload fileUploadListener="#{picturebean.upload}"  sizeLimit="1000000000" description="Select Images" onsuccess="uploadFileDlgW.hide()"/>
-        
-
-						 		  			
-	</h:form>
-					</p:dialog>	
-					
-					
-					
-	 	     </p:panel>
-	 	   
-	 	    <p:panel header=" Welcome #{profB.student.login}" footer="© Esprit" >
-	        
-	         <h:panelGrid columns="2">
-	         <h:outputText value="First Name" />
-	         <h:outputText value="#{profB.student.firstName}" />
-	         <h:outputText value="Last Name" />
-	         <h:outputText value="#{profB.student.lastName}" />
-	         <h:outputText value="Cin/Passport" />
-	         <h:outputText value="#{profB.student.cin}" />
-	         <h:outputText value="Date of birth" />
-	         <h:outputText value="#{profB.student.dateOfBirth}" />
-	         <h:outputText value="Sexe" />
-	         <h:outputText value="#{profB.student.sexe}" />
-	         <h:outputText value="Mail" />
-	        <h:outputText value="#{profB.student.mail}" />
-	        <h:outputText value="Education" />
-	        <h:outputText value="#{profB.student.education}" />
-	        
-
-	         </h:panelGrid>
-	 </p:panel>
-	 
-	 </h:panelGrid>
-	 
-	 <h:form rendered="#{profB.notifi()}"/>
-	   <p:growl id="growl" showDetail="true" sticky="true"/>
-	   
-   
-	
-</p:panel>	 	 
-			</ui:define>
+					<p:dialog id="uploadFileDlg" header="upload a picture"
+						widgetVar="uploadFileDlgW" position="top" modal="true"
+						resizable="false" styleClass="upload-dialog">
+						<h:form>
+							<p:fileUpload fileUploadListener="#{picturebean.upload}"
+								sizeLimit="1000000000" description="Select Images"
+								onsuccess="uploadFileDlgW.hide()" />
+						</h:form>
+					</p:dialog>
+				</p:panel>
+				<p:panel header=" Welcome #{profB.student.login}" footer="© Esprit">
+					<h:panelGrid columns="2">
+						<h:outputText value="First Name" />
+						<h:outputText value="#{profB.student.firstName}" />
+						<h:outputText value="Last Name" />
+						<h:outputText value="#{profB.student.lastName}" />
+						<h:outputText value="Cin/Passport" />
+						<h:outputText value="#{profB.student.cin}" />
+						<h:outputText value="Date of birth" />
+						<h:outputText value="#{profB.student.dateOfBirth}" />
+						<h:outputText value="Sexe" />
+						<h:outputText value="#{profB.student.sexe}" />
+						<h:outputText value="Mail" />
+						<h:outputText value="#{profB.student.mail}" />
+						<h:outputText value="Education" />
+						<h:outputText value="#{profB.student.education}" />
+					</h:panelGrid>
+				</p:panel>
+			</h:panelGrid>
+			<h:form rendered="#{profB.notifi()}" />
+			<p:growl id="growl" showDetail="true" sticky="true" />
+		</p:panel>
+	</ui:define>
 </ui:composition>

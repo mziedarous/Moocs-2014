@@ -1,40 +1,32 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
-       
-       
-          <h:form rendered="#{courseBean.findAllThematicForItem()}"/>     
-            <h:form id="master">	
-				<p:dataTable rendered="#{not empty courseBean.courses}" 
-				             value="#{courseBean.courses}" 
-				             var="cour" 
-				             rows="10"
-				             rowKey="#{cour.id}"
-				             paginator="true"
-				             paginatorPosition="bottom"
-				             filteredValue="#{courseBean.filtredCourses}"
-				             selectionMode="single"
-				             selection="#{courseBean.course}"
-				             widgetVar="courTabW">
-				 	<f:facet name="header">
-					        <h:outputText value="My Courses" />
-					</f:facet>
-					
-					<p:ajax event="rowSelect" listener="#{courseBean.onRowSelect}" update=":details"/>
-					
-					<p:column headerText="Course" filterBy="#{cour.courseName}" filterMatchMode="contains">
-						<h:outputText value="#{cour.courseName}" />
-					</p:column>
-					
-					<h:form rendered="#{courseBean.findAllThematicForItem()}"/> 
-					<p:column headerText="Thematic" filterBy="#{cour.thematic.nameThematic}" filterMatchMode="exact" filterOptions="#{courseBean.filterOptions}">
-						<h:outputText value="#{cour.thematic.nameThematic}" />
-					</p:column>
-					
-
-				</p:dataTable>
-				<p:commandButton icon="ui-icon-circle-plus" actionListener="#{courseBean.doNew}" value="new" update=":details"/>
-			</h:form>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form rendered="#{courseBean.findAllThematicForItem()}" />
+	<h:form id="master">
+		<p:dataTable rendered="#{not empty courseBean.courses}"
+			value="#{courseBean.courses}" var="cour" rows="10"
+			rowKey="#{cour.id}" paginator="true" paginatorPosition="bottom"
+			filteredValue="#{courseBean.filtredCourses}" selectionMode="single"
+			selection="#{courseBean.course}" widgetVar="courTabW">
+			<f:facet name="header">
+				<h:outputText value="My Courses" />
+			</f:facet>
+			<p:ajax event="rowSelect" listener="#{courseBean.onRowSelect}"
+				update=":details" />
+			<p:column headerText="Course" filterBy="#{cour.courseName}"
+				filterMatchMode="contains">
+				<h:outputText value="#{cour.courseName}" />
+			</p:column>
+			<h:form rendered="#{courseBean.findAllThematicForItem()}" />
+			<p:column headerText="Thematic"
+				filterBy="#{cour.thematic.nameThematic}" filterMatchMode="exact"
+				filterOptions="#{courseBean.filterOptions}">
+				<h:outputText value="#{cour.thematic.nameThematic}" />
+			</p:column>
+		</p:dataTable>
+		<p:commandButton icon="ui-icon-circle-plus"
+			actionListener="#{courseBean.doNew}" value="new" update=":details" />
+	</h:form>
 </ui:composition>

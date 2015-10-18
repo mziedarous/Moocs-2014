@@ -3,26 +3,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
-
 	<ui:define name="titlePage"></ui:define>
 	<ui:define name="pageContent">
-
-
-
-
 		<p:panel id="simple" header="WELCOME !!" footer="©ESPRIT">
 			<h:panelGrid columns="1">
-
 				<p:galleria panelHeight="130" panelWidth="558">
 					<p:graphicImage value="/resources/img/galories/g1.jpg" />
 					<p:graphicImage value="/resources/img/galories/g4.png" />
 					<p:graphicImage value="/resources/img/galories/g2.jpg" />
-
 					<p:graphicImage value="/resources/img/galories/03.png" />
 				</p:galleria>
 				<br />
 				<br />
-
 				<h:outputText
 					value="MOOCs is an online course aimed at unlimited participation and open access via the web. In addition 
 to traditional course materials such as videos, readings, and problem sets, MOOCs provide interactive 
@@ -34,64 +26,44 @@ and teaching assistants (TAs). MOOCs are a recent development in distance educat
  while maintaining free access for students.
 
  " />
-
 				<h:outputText
 					value=" Study, have fun, uncover a new passion or learn skills that just may change your life."
 					styleClass="error" />
 			</h:panelGrid>
 		</p:panel>
-		
-
-		
-
 		<p:accordionPanel>
 			<p:tab title="Esprit ">
 				<h:panelGrid columns="1" cellpadding="10">
-
 					<h:outputText
 						value="Founded in 2003 on the initiative of a group of academics who have led many projects in the Tunisian higher education and higher technical education in particular, Esprit started with thirty students. It is now a major player in the training of engineers in Tunisia. 
 It recently celebrated its 10 years of existence in the year 2013 and has overall nearly 4000 students divided into four sectors: IT, telecommunications, electro-mechanical and civil engineering." />
 				</h:panelGrid>
 			</p:tab>
-
-
 		</p:accordionPanel>
-
 		<p:accordionPanel>
 			<p:tab title="MOOCs Members ">
 				<h:panelGrid columns="1" cellpadding="10">
-
 					<h:outputText
 						value="Member institutions are a carefully selected group of universities, NGOs, businesses and other high-profile quality course builders" />
 				</h:panelGrid>
 			</p:tab>
-
-
 		</p:accordionPanel>
-
 		<p:accordionPanel>
 			<p:tab title="MOOCs Charter Members ">
 				<h:panelGrid columns="1" cellpadding="10">
-
 					<h:outputText
 						value="Our Charter Member colleges and universities drive the ESPRIT-MOOCs vision " />
 				</h:panelGrid>
 			</p:tab>
-
-
 		</p:accordionPanel>
-
-
 	</ui:define>
 	<ui:define name="fot">
-
 		<p:dock id="dock" position="bottom">
-
 			<p:menuitem value="Facebook" icon="/resources/img/facebook-icon.png"
 				url="https://www.facebook.com/moocs.2014?notif_t=fbpage_fan_invite" />
 			<p:menuitem value="LinkedIn" icon="/resources/img/in.png" url="#" />
-
-			<p:menuitem value="Twitter" icon="/resources/img/tw.png" url="https://twitter.com/MooCs2014" />
+			<p:menuitem value="Twitter" icon="/resources/img/tw.png"
+				url="https://twitter.com/MooCs2014" />
 			<p:menuitem value="Wordpress" icon="/resources/img/wd.png" url="#" />
 		</p:dock>
 	</ui:define>

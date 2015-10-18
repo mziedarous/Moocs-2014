@@ -1,62 +1,39 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                 xmlns:p="http://primefaces.org/ui">
-                	
-                	
-             
-             
-          <ui:define name="nav">
-   
-        
-              <h:form id="form"> 
-         <p:panel header="Time Out" footer="Good Luck !!">
-           <h2 style="color: green; padding-left: 50px">  <h:outputText id="txt_count" value="#{certifBean.count}" />  </h2>
-         </p:panel>     
-     <p:poll interval="1"   
-            listener="#{certifBean.increment}" update=":form:txt_count" stop="#{certifBean.stopincrem()}"  />
-     </h:form> 
-       	  
-           
-           </ui:define>     	
-	
-		
-             
-                 	
-                	
-                	
-			<ui:define name="pageContent">
-				<h:form>
-				<p:scrollPanel style="width:600px;height:1000px">  
-					<ui:repeat var="ques" value="#{certifBean.questionsOfCertif}">
-					<h3 style="color: red;">
-					#{ques.nameQuestion}
-					</h3>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="nav">
+		<h:form id="form">
+			<p:panel header="Time Out" footer="Good Luck !!">
+				<h2 style="color: green; padding-left: 50px">
+					<h:outputText id="txt_count" value="#{certifBean.count}" />
+				</h2>
+			</p:panel>
+			<p:poll interval="1" listener="#{certifBean.increment}"
+				update=":form:txt_count" stop="#{certifBean.stopincrem()}" />
+		</h:form>
+	</ui:define>
+	<ui:define name="pageContent">
+		<h:form>
+			<p:scrollPanel style="width:600px;height:1000px">
+				<ui:repeat var="ques" value="#{certifBean.questionsOfCertif}">
+					<h3 style="color: red;">#{ques.nameQuestion}</h3>
 					<ui:repeat var="ans" value="#{ques.answers}">
-					
-					<br />
-					
-					          <p:poll interval="1"   
-            listener="#{certifBean.increment2()}" stop="#{certifBean.stopincrem2()}"  />
-   
-					
-					<h:selectOneRadio layout="pageDirection" value="#{certifBean.i}">
-					
-					<f:selectItem itemLabel="#{ans.annser1}" itemValue="1"/>
-					<f:selectItem itemLabel="#{ans.annser2}" itemValue="2"/>
-					<f:selectItem itemLabel="#{ans.annser3}" itemValue="3"/>
-					
-					</h:selectOneRadio>
-					
-					
+						<br />
+						<p:poll interval="1" listener="#{certifBean.increment2()}"
+							stop="#{certifBean.stopincrem2()}" />
+						<h:selectOneRadio layout="pageDirection" value="#{certifBean.i}">
+							<f:selectItem itemLabel="#{ans.annser1}" itemValue="1" />
+							<f:selectItem itemLabel="#{ans.annser2}" itemValue="2" />
+							<f:selectItem itemLabel="#{ans.annser3}" itemValue="3" />
+						</h:selectOneRadio>
 					</ui:repeat>
-					</ui:repeat>
-					
-					<p:commandButton value="validate" actionListener="#{certifBean.validate()}" action="#{certifBean.goToResult()}"/>				
+				</ui:repeat>
+				<p:commandButton value="validate"
+					actionListener="#{certifBean.validate()}"
+					action="#{certifBean.goToResult()}" />
 			</p:scrollPanel>
-				</h:form>
-			</ui:define>		
-
+		</h:form>
+	</ui:define>
 </ui:composition>

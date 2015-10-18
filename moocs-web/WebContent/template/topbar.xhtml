@@ -1,39 +1,33 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
-                	
-
-<h:outputStylesheet library="css" name="application.css"/>
-
-
-					<h:form>
-					<h:panelGrid columns="5" cellpadding="11"  >
-						
-		
-		                 	<h:commandLink action="/welcome" value="How it work" styleClass="info">
-		                 	<f:setPropertyActionListener target="#{certifBean.affCertif}" value="true"/>
-		                 	</h:commandLink>
-		                 	<h:commandLink action="#{findC.findAllCourses()}" value="Courses" styleClass="info" >
-		                 	<f:setPropertyActionListener target="#{certifBean.affCertif}" value="true"/>
-		                 	</h:commandLink>
-		                 
-		                    <h:commandLink action="/pages/registerNow" value="Register Now" styleClass="info" rendered="#{authBean.userType.equals('')}" />
-
-                            <h:commandLink action="/pages/login" value="LOGIN" styleClass="info" rendered="#{authBean.loggedIn}" />
-		                   
-		                  
-		                    <h:commandLink action="/pages/home" value="My Profil"  rendered="#{authBean.userType.equals('student')}" styleClass="info">
-		                    <f:setPropertyActionListener target="#{certifBean.affCertif}" value="true"/>
-		                    </h:commandLink>
-		                   
-		                  
-                            <h:commandLink action="/pages/homeTeacher" value="My Profil" rendered="#{authBean.userType.equals('teacher')}" styleClass="info"/>
-		                 
-		                    <h:commandLink action="#{authBean.doLogOut()}" value="LOGOUT" styleClass="info" rendered="#{authBean.loggedOut}" />
-		            
-		            </h:panelGrid>
-			       </h:form>
-			       
-			       
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:outputStylesheet library="css" name="application.css" />
+	<h:form>
+		<h:panelGrid columns="5" cellpadding="11">
+			<h:commandLink action="/welcome" value="How it work"
+				styleClass="info">
+				<f:setPropertyActionListener target="#{certifBean.affCertif}"
+					value="true" />
+			</h:commandLink>
+			<h:commandLink action="#{findC.findAllCourses()}" value="Courses"
+				styleClass="info">
+				<f:setPropertyActionListener target="#{certifBean.affCertif}"
+					value="true" />
+			</h:commandLink>
+			<h:commandLink action="/pages/registerNow" value="Register Now"
+				styleClass="info" rendered="#{authBean.userType.equals('')}" />
+			<h:commandLink action="/pages/login" value="LOGIN" styleClass="info"
+				rendered="#{authBean.loggedIn}" />
+			<h:commandLink action="/pages/home" value="My Profil"
+				rendered="#{authBean.userType.equals('student')}" styleClass="info">
+				<f:setPropertyActionListener target="#{certifBean.affCertif}"
+					value="true" />
+			</h:commandLink>
+			<h:commandLink action="/pages/homeTeacher" value="My Profil"
+				rendered="#{authBean.userType.equals('teacher')}" styleClass="info" />
+			<h:commandLink action="#{authBean.doLogOut()}" value="LOGOUT"
+				styleClass="info" rendered="#{authBean.loggedOut}" />
+		</h:panelGrid>
+	</h:form>
 </ui:composition>

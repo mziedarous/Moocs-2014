@@ -1,75 +1,58 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<title>MOOCs</title>
-		<h:outputStylesheet library="css" name="application.css"/>
-		<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/favicon.ico" />
-		<style >
-		
-		.bimage{background-image:url("#{request.contextPath}/resources/img/bimg2.jpg");background-repeat: no-repeat; background-attachment: fixed; background-position: top;  }
-		.bimage2{background-image:url("#{request.contextPath}/resources/img/logo.jpg"); }
-		</style>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>MOOCs</title>
+	<h:outputStylesheet library="css" name="application.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/img/favicon.ico" />
+	<style>
+.bimage {
+	background-image: url("#{request.contextPath}/resources/img/bimg2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: top;
+}
 
-	</h:head>
-	<h:body styleClass="bimage" >
-			<div id="container" >
-			
-			
-				<div id="header">
-				
-				
-				<h:graphicImage library="img" name="logoMoocs.png" /> 
-				
-				 </div>
-				
-				<hr></hr>
-				
-				<div id="horizon">
-				
-					<div id="topbar">
-					<ui:include src="/template/topbar.xhtml" />
-					<ui:include src="/template/identity.xhtml" />
-					</div>
-					
-					<div id="identity">
-					
-					<ui:include src="/template/searchCourses.xhtml" />
-					</div>
-				</div>
-					
-				<hr></hr>
-								
-				<div id="main">
-					
-					<div id="content" >
-					
-  
-					 
-					<ui:insert name="pageContent"/>
-					
-				 
-					 
-					
-					<ui:insert name="res"/>
-					 </div>
-					<div id="navigation"> <ui:insert name="nav"></ui:insert>
-					<ui:include src="/template/nav.xhtml" />
-					 </div> 
-
-				</div>
-				
-				<hr></hr>
-				
-	            <div id="footer" ><ui:include src="/template/footer.xhtml" />
-	           
-	           <ui:insert name="fot"/> 
-	            
-	            </div>
-	            
-	        </div>	
-	</h:body>
+.bimage2 {
+	background-image: url("#{request.contextPath}/resources/img/logo.jpg");
+}
+</style>
+</h:head>
+<h:body styleClass="bimage">
+	<div id="container">
+		<div id="header">
+			<h:graphicImage library="img" name="logoMoocs.png" />
+		</div>
+		<hr></hr>
+		<div id="horizon">
+			<div id="topbar">
+				<ui:include src="/template/topbar.xhtml" />
+				<ui:include src="/template/identity.xhtml" />
+			</div>
+			<div id="identity">
+				<ui:include src="/template/searchCourses.xhtml" />
+			</div>
+		</div>
+		<hr></hr>
+		<div id="main">
+			<div id="content">
+				<ui:insert name="pageContent" />
+				<ui:insert name="res" />
+			</div>
+			<div id="navigation">
+				<ui:insert name="nav"></ui:insert>
+				<ui:include src="/template/nav.xhtml" />
+			</div>
+		</div>
+		<hr></hr>
+		<div id="footer">
+			<ui:include src="/template/footer.xhtml" />
+			<ui:insert name="fot" />
+		</div>
+	</div>
+</h:body>
 </html>

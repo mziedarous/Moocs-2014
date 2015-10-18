@@ -1,38 +1,28 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-				
-			<ui:define name="pageContent">
-			<p:panel header="Result of our subscribe student" footer="Esprit 2014">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageContent">
+		<p:panel header="Result of our subscribe student" footer="Esprit 2014">
 			<ui:repeat var="quiz" value="#{teaBean.quizs2}">
-			
-			<h2 style="color: red;">#{quiz.nameQuiz}</h2>
-			
-			
-				  <p:dataTable var="stu" value="#{teaBean.doSeeStudentResult(quiz)}">
-				 <p:column headerText="Fistname">
+				<h2 style="color: red;">#{quiz.nameQuiz}</h2>
+				<p:dataTable var="stu" value="#{teaBean.doSeeStudentResult(quiz)}">
+					<p:column headerText="Fistname">
 				#{stu.firstName}
 				</p:column>
-			  <p:column headerText="LasName">
+					<p:column headerText="LasName">
 				#{stu.lastName}
-				</p:column>		
-
-			  <p:column headerText="Mail">
+				</p:column>
+					<p:column headerText="Mail">
 				#{stu.mail}
-				</p:column>	
-				
-				<p:column headerText="Mark">
-		    <h4 style="color: red;">     #{teaBean.noteOfStudent(stu,quiz)}/3	</h4>
-		        </p:column> 
+				</p:column>
+					<p:column headerText="Mark">
+						<h4 style="color: red;">#{teaBean.noteOfStudent(stu,quiz)}/3
+						</h4>
+					</p:column>
 				</p:dataTable>
-			
-			
 			</ui:repeat>
-			</p:panel>
-			
-			</ui:define>
+		</p:panel>
+	</ui:define>
 </ui:composition>

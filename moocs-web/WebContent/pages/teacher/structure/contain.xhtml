@@ -1,31 +1,19 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui"
-                >
-                	
-			<ui:define name="pageContent">
-			<h:form>
-			
-			
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageContent">
+		<h:form>
 			<p:panel header="Contain of #{chapterBean.chapter.name}">
-			
-			
-			<br />
-			
-			<p:editor value="#{chapterBean.staticText.titleText}" />
-			<br/>
-		
-	    	<f:facet name="footer">
-	    	
-			<p:commandButton action="#{chapterBean.doLinkContainToChapter()}" value="Save" />
-			</f:facet>
-			
+				<br />
+				<p:editor value="#{chapterBean.staticText.titleText}" />
+				<br />
+				<f:facet name="footer">
+					<p:commandButton action="#{chapterBean.doLinkContainToChapter()}"
+						value="Save" />
+				</f:facet>
 			</p:panel>
-			
-			</h:form>
-			</ui:define>		
-			
+		</h:form>
+	</ui:define>
 </ui:composition>

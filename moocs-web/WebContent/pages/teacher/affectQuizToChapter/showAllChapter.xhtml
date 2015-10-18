@@ -1,50 +1,30 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageContent">
-			
-					
-			<h:form id="details2">
-		
-				<p:dataTable rendered="#{not empty quizBean.chapters}" 
-				             value="#{quizBean.chapters}" 
-				             var="chap" 
-				             rows="7"
-				             rowKey="#{chap.id}"
-				             paginator="true"
-				             paginatorPosition="bottom"
-				             filteredValue="#{quizBean.filtredChapter}"
-				             selectionMode="single"
-				             selection="#{quizBean.chapter}"
-				             widgetVar="chapTabW">
-				             
-				             
-				 	<f:facet name="header">
-					        <h:outputText value="My chapter of #{quizBean.course.courseName}" />
-					</f:facet>
-			<h:form rendered="#{quizBean.refind()}"/>		
-			<p:ajax event="rowSelect" listener="#{quizBean.onRowSelect2}" update=":details2" />			
-					
-					<p:column headerText="Chapter">
-						<h:outputText value="#{chap.name}" />
-					</p:column>
-					
-	
-					
-<f:facet name="footer">
-<p:commandButton value="Choose thematic" action="#{quizBean.goToSeletQuiz()}" disabled="#{quizBean.selected2}"/>
-
-</f:facet>
-
-				</p:dataTable>
-			</h:form>
-			
-			
-			
-			</ui:define>		
-			
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageContent">
+		<h:form id="details2">
+			<p:dataTable rendered="#{not empty quizBean.chapters}"
+				value="#{quizBean.chapters}" var="chap" rows="7" rowKey="#{chap.id}"
+				paginator="true" paginatorPosition="bottom"
+				filteredValue="#{quizBean.filtredChapter}" selectionMode="single"
+				selection="#{quizBean.chapter}" widgetVar="chapTabW">
+				<f:facet name="header">
+					<h:outputText value="My chapter of #{quizBean.course.courseName}" />
+				</f:facet>
+				<h:form rendered="#{quizBean.refind()}" />
+				<p:ajax event="rowSelect" listener="#{quizBean.onRowSelect2}"
+					update=":details2" />
+				<p:column headerText="Chapter">
+					<h:outputText value="#{chap.name}" />
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton value="Choose thematic"
+						action="#{quizBean.goToSeletQuiz()}"
+						disabled="#{quizBean.selected2}" />
+				</f:facet>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
 </ui:composition>

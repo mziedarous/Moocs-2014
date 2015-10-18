@@ -3,34 +3,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-
 	<h:form rendered="#{chapterBean.formDisplayed}">
-
-
-<p:panelGrid columns="3"> 
-		<h:outputText value="Title" />
-
-		<h:inputText id="ch" value="#{chapterBean.chapter.name}"/>
-		
-	
-		
-</p:panelGrid>		
-		
-		
+		<p:panelGrid columns="3">
+			<h:outputText value="Title" />
+			<h:inputText id="ch" value="#{chapterBean.chapter.name}" />
+		</p:panelGrid>
 		<h:selectOneRadio value="#{chapterBean.chapter.hasQuiz}">
 			<f:selectItem itemValue="true" itemLabel="With Quiz" />
 		</h:selectOneRadio>
 		<h:commandButton action="#{chapterBean.createChapter}" value="ok">
-
 			<f:setPropertyActionListener target="#{chapterBean.formDisplayed}"
 				value="false" />
-				
 		</h:commandButton>
 		<h:commandButton value="cancel">
 			<f:setPropertyActionListener target="#{chapterBean.formDisplayed}"
 				value="false" />
 		</h:commandButton>
 	</h:form>
-
 </ui:composition>

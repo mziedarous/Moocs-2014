@@ -1,40 +1,28 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageContent">
-			
-	         <h:form>
-	         
-	       <p:panel header="Creation of Certification" footer="Esprit 2014">  
-	         <h:panelGrid columns="3">
-	         	
-	         	<h:outputText value="Date Of Certication" />
-	            	<p:calendar id="paging" value="#{Cbean.certification.dateCertif}"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageContent">
+		<h:form>
+			<p:panel header="Creation of Certification" footer="Esprit 2014">
+				<h:panelGrid columns="3">
+					<h:outputText value="Date Of Certication" />
+					<p:calendar id="paging" value="#{Cbean.certification.dateCertif}"
 						pattern="MM/dd/yyyy HH:mm"
 						converterMessage="EXEMPLE : 04/26/2014 16:22" required="true"
 						requiredMessage="Your date of birth is required" />
-
-
 					<h:message for="paging" styleClass="error" />
-	            
-	            <h:outputFormat value="Duration" />
-	            <h:inputText id="time" value="#{Cbean.certification.timeCertif}" validatorMessage="This field is wrang">
-	            <f:validateDoubleRange  />
-	            </h:inputText>
-	            <h:message for="time"/>
-	            
-	         
-	         </h:panelGrid>
-	         
-	         <h:commandButton action="#{Cbean.doCreateCertification()}" value="create" />
-	         </p:panel>
-	         </h:form>
-			
-			
-			</ui:define>		
-			
+					<h:outputFormat value="Duration" />
+					<h:inputText id="time" value="#{Cbean.certification.timeCertif}"
+						validatorMessage="This field is wrang">
+						<f:validateDoubleRange />
+					</h:inputText>
+					<h:message for="time" />
+				</h:panelGrid>
+				<h:commandButton action="#{Cbean.doCreateCertification()}"
+					value="create" />
+			</p:panel>
+		</h:form>
+	</ui:define>
 </ui:composition>

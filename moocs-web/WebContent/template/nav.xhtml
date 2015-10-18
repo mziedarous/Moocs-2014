@@ -1,44 +1,36 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
-                	
-                	<h:form rendered="#{authBean.userType.equals('teacher')}">
-                		<p:panel header="Courses Structure" footer="">
-                		
-                		<p:panelGrid columns="1">
-                			<p:commandLink  action="/pages/teacher/thematic/manage" value="THEMATICS"/>
-                			<p:commandLink action="#{courseBean.doInitByTeacher}" value="COURSES" />
-                			<p:commandLink action="#{courseBean.showAllthematic()}" value="DEFINE COURSE" />
-                			<p:commandLink action="#{quizBean.goToQuizAffection()}" value="AFFECT QUIZ TO CHAPTER" />
-                		</p:panelGrid>
-                		</p:panel>
-                	</h:form>
-                	
-                	<h:form rendered="#{authBean.userType.equals('student')}">
-	                	
-	                	
-	                   <p:panelGrid columns="1" rendered="#{certifBean.affCertif}">
-	                  <ui:repeat var="th" value="#{certifBean.thematics}">
-	                 
-	                  <p:panel header="#{th.nameThematic}">
-	                  
-	                  <p:commandButton action="#{certifBean.goToCertif}" value="Certification"  disabled="#{certifBean.authoraze(th)}">
-	                  <f:setPropertyActionListener target="#{certifBean.thematic}" value="#{th}"/>
-	                  <f:setPropertyActionListener target="#{certifBean.affCertif}" value="false"/>
-	                  </p:commandButton>
-	                  
-	                  
-	                  </p:panel>
-	                  <br />
-	                
-	                  </ui:repeat>
-	                    </p:panelGrid>
-	                  
-	                	
-                	
-                	</h:form>
-	
-	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form rendered="#{authBean.userType.equals('teacher')}">
+		<p:panel header="Courses Structure" footer="">
+			<p:panelGrid columns="1">
+				<p:commandLink action="/pages/teacher/thematic/manage"
+					value="THEMATICS" />
+				<p:commandLink action="#{courseBean.doInitByTeacher}"
+					value="COURSES" />
+				<p:commandLink action="#{courseBean.showAllthematic()}"
+					value="DEFINE COURSE" />
+				<p:commandLink action="#{quizBean.goToQuizAffection()}"
+					value="AFFECT QUIZ TO CHAPTER" />
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	<h:form rendered="#{authBean.userType.equals('student')}">
+		<p:panelGrid columns="1" rendered="#{certifBean.affCertif}">
+			<ui:repeat var="th" value="#{certifBean.thematics}">
+				<p:panel header="#{th.nameThematic}">
+					<p:commandButton action="#{certifBean.goToCertif}"
+						value="Certification" disabled="#{certifBean.authoraze(th)}">
+						<f:setPropertyActionListener target="#{certifBean.thematic}"
+							value="#{th}" />
+						<f:setPropertyActionListener target="#{certifBean.affCertif}"
+							value="false" />
+					</p:commandButton>
+				</p:panel>
+				<br />
+			</ui:repeat>
+		</p:panelGrid>
+	</h:form>
 </ui:composition>

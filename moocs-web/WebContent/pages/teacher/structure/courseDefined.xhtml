@@ -1,52 +1,28 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageTitle">course</ui:define>		
-			<ui:define name="pageContent">
-                
-                <h1 style="color: red;"> </h1>
-				
-                
-                <h:form>	
-			
-				             
-					<p:dataTable rendered="#{not empty chapterBean.chapters2}" 
-				             value="#{chapterBean.chapters2}" 
-				             var="chap" 
-				             rows="7"
-				             rowKey="#{chap.id}"
-				             paginator="true"
-				             paginatorPosition="bottom"
-				             filteredValue="#{chapterBean.filtredChapter}"
-				             selectionMode="single"
-				             selection="#{chapterBean.chapter}"
-				             widgetVar="chapTabW">			             
-				             
-				             
-				             
-				             
-				             
-				 	<f:facet name="header">
-					        <h:outputText value="#{courseBean.course.courseName}" />
-					</f:facet>
-					<p:column headerText="chapter name">
-	
-						<h:outputText value="#{chap.name}" />
-					</p:column>
-					
-					
-
-					
-					<f:facet name="footer">
-					<p:commandButton value="select" action="#{chapterBean.showContain()}"/>
-					</f:facet>
-				</p:dataTable>
-             
-			</h:form>
-                	
-</ui:define>	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">course</ui:define>
+	<ui:define name="pageContent">
+		<h1 style="color: red;"></h1>
+		<h:form>
+			<p:dataTable rendered="#{not empty chapterBean.chapters2}"
+				value="#{chapterBean.chapters2}" var="chap" rows="7"
+				rowKey="#{chap.id}" paginator="true" paginatorPosition="bottom"
+				filteredValue="#{chapterBean.filtredChapter}" selectionMode="single"
+				selection="#{chapterBean.chapter}" widgetVar="chapTabW">
+				<f:facet name="header">
+					<h:outputText value="#{courseBean.course.courseName}" />
+				</f:facet>
+				<p:column headerText="chapter name">
+					<h:outputText value="#{chap.name}" />
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton value="select"
+						action="#{chapterBean.showContain()}" />
+				</f:facet>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
 </ui:composition>

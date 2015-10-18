@@ -1,34 +1,26 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
-                
-            <h:form id="master">	
-				<p:dataTable rendered="#{not empty thematicBean.thematics}" 
-				             value="#{thematicBean.thematics}" 
-				             var="them" 
-				             rows="5"
-				             rowKey="#{them.id}"
-				             paginator="true"
-				             paginatorPosition="bottom"
-				             filteredValue="#{thematicBean.filtredThelatics}"
-				             selectionMode="single"
-				             selection="#{thematicBean.thematic}"
-				             widgetVar="catTabW">
-				             
-				 	<f:facet name="header">
-					        <h:outputText value="Thematics" />
-					</f:facet>
-					
-					<p:ajax event="rowSelect" listener="#{thematicBean.onRowSelect}" update=":details"/>
-					
-					<p:column headerText="Search" filterBy="#{them.nameThematic}" filterMatchMode="contains">
-						<h:outputText value="#{them.nameThematic}" />
-					</p:column>
-
-					
-				</p:dataTable>
-				<p:commandButton icon="ui-icon-circle-plus" actionListener="#{thematicBean.doNew}" value="new" update=":details"/>
-			</h:form>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="master">
+		<p:dataTable rendered="#{not empty thematicBean.thematics}"
+			value="#{thematicBean.thematics}" var="them" rows="5"
+			rowKey="#{them.id}" paginator="true" paginatorPosition="bottom"
+			filteredValue="#{thematicBean.filtredThelatics}"
+			selectionMode="single" selection="#{thematicBean.thematic}"
+			widgetVar="catTabW">
+			<f:facet name="header">
+				<h:outputText value="Thematics" />
+			</f:facet>
+			<p:ajax event="rowSelect" listener="#{thematicBean.onRowSelect}"
+				update=":details" />
+			<p:column headerText="Search" filterBy="#{them.nameThematic}"
+				filterMatchMode="contains">
+				<h:outputText value="#{them.nameThematic}" />
+			</p:column>
+		</p:dataTable>
+		<p:commandButton icon="ui-icon-circle-plus"
+			actionListener="#{thematicBean.doNew}" value="new" update=":details" />
+	</h:form>
 </ui:composition>

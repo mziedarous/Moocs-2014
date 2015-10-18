@@ -1,30 +1,29 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageContent">
-			
-			<h:form>
-						<p:panel header="Your result" footer="Esprit 2013-2014">
-			<h2> you have<h1 style="color: red;"> #{certifBean.pourcentage}% </h1> good responces </h2>
-				
-		
-		   
-			<f:facet name="footer">
-			<p:spacer width="180" height="10" />
-			<p:commandButton value="finish" actionListener="#{certifBean.initModel()}" action="#{certifBean.doFinishCertif()}"/>
-			<p:spacer width="20" height="20" />
-			<p:commandButton value="DownLoad your Certification" ajax="false" rendered="#{certifBean.downloadCertif}" icon="ui-icon-arrowthichk-s">
-			
-			 <p:fileDownload value="#{certifBean.content}" />
-                </p:commandButton>
-			
-			</f:facet>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageContent">
+		<h:form>
+			<p:panel header="Your result" footer="Esprit 2013-2014">
+				<h2>
+					you have
+					<h1 style="color: red;">#{certifBean.pourcentage}%</h1>
+					good responces
+				</h2>
+				<f:facet name="footer">
+					<p:spacer width="180" height="10" />
+					<p:commandButton value="finish"
+						actionListener="#{certifBean.initModel()}"
+						action="#{certifBean.doFinishCertif()}" />
+					<p:spacer width="20" height="20" />
+					<p:commandButton value="DownLoad your Certification" ajax="false"
+						rendered="#{certifBean.downloadCertif}"
+						icon="ui-icon-arrowthichk-s">
+						<p:fileDownload value="#{certifBean.content}" />
+					</p:commandButton>
+				</f:facet>
 			</p:panel>
-			</h:form>
-			</ui:define>		
-			
+		</h:form>
+	</ui:define>
 </ui:composition>

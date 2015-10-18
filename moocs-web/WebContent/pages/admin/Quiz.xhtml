@@ -1,86 +1,51 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/template/template.xhtml">
-              
-            
-           <ui:define name="nav">
-   
-        
-              <h:form id="form"> 
-         <p:panel header="Time Out" footer="Good Luck !!">
-           <h2 style="color: green; padding-left: 50px">  <h:outputText id="txt_count" value="#{findC.count}" />  </h2>
-         </p:panel>     
-     <p:poll interval="1"   
-            listener="#{findC.increment}" update=":form:txt_count" stop="#{findC.stopincrem()}"  />
-     </h:form> 
-       	  
-           
-           </ui:define>     	
-	
-			<ui:define name="res">
-
-
-    
-    
- <h2 style="color: olive; padding-left: 200px;">   #{findC.chapter.name} </h2> 
- <br />
- <br />
- <h:form>    
- <p:panel header="The Quiz" footer="Esprit 2013-2014" >
-     <ui:repeat value="#{findC.questions}" var="ques"  >
-     
-     <h3 style="color: red;">
-     #{ques.nameQuestion}
-     </h3>
-     <ui:repeat var="ans" value="#{ques.answers}">
-     <br />
-     
-          <p:poll interval="1"   
-            listener="#{findC.increment2()}" update="mm" stop="#{findC.stopincrem2()}"  />
-    <p:selectOneRadio layout="pageDirection" value="#{findC.i}" id="mm">
-
- 
-    
-    <f:selectItem itemLabel="#{ans.annser1}" itemValue="1" />
-  
-    
-
-    <f:selectItem itemLabel="#{ans.annser2}" itemValue="2"  />
-    
-    
-
-    <f:selectItem itemLabel="#{ans.annser3}" itemValue="3"  />
-   
-
-   
-
-
- </p:selectOneRadio> 
-    
-  
-     </ui:repeat>
-     
-                    
-     
-  
-     </ui:repeat>
-    
-  </p:panel>   
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:define name="nav">
+		<h:form id="form">
+			<p:panel header="Time Out" footer="Good Luck !!">
+				<h2 style="color: green; padding-left: 50px">
+					<h:outputText id="txt_count" value="#{findC.count}" />
+				</h2>
+			</p:panel>
+			<p:poll interval="1" listener="#{findC.increment}"
+				update=":form:txt_count" stop="#{findC.stopincrem()}" />
+		</h:form>
+	</ui:define>
+	<ui:define name="res">
+		<h2 style="color: olive; padding-left: 200px;">
+			#{findC.chapter.name}</h2>
+		<br />
+		<br />
+		<h:form>
+			<p:panel header="The Quiz" footer="Esprit 2013-2014">
+				<ui:repeat value="#{findC.questions}" var="ques">
+					<h3 style="color: red;">#{ques.nameQuestion}</h3>
+					<ui:repeat var="ans" value="#{ques.answers}">
+						<br />
+						<p:poll interval="1" listener="#{findC.increment2()}" update="mm"
+							stop="#{findC.stopincrem2()}" />
+						<p:selectOneRadio layout="pageDirection" value="#{findC.i}"
+							id="mm">
+							<f:selectItem itemLabel="#{ans.annser1}" itemValue="1" />
+							<f:selectItem itemLabel="#{ans.annser2}" itemValue="2" />
+							<f:selectItem itemLabel="#{ans.annser3}" itemValue="3" />
+						</p:selectOneRadio>
+					</ui:repeat>
+				</ui:repeat>
+			</p:panel>
 			<br />
 			<br />
-
-    <p:panel footer="">
-    <p:spacer width="210" height="10" />       			
-	<p:commandButton value="give up" action="course"  actionListener="#{findC.initModel2()}" />
-       <p:spacer width="25" height="20" /> 
-	<p:commandButton value="validate" actionListener="#{findC.validate()}" action="#{findC.goToResult()}"/>		
-</p:panel>   
-	   </h:form>		
-
-			</ui:define>
-			
- 			
+			<p:panel footer="">
+				<p:spacer width="210" height="10" />
+				<p:commandButton value="give up" action="course"
+					actionListener="#{findC.initModel2()}" />
+				<p:spacer width="25" height="20" />
+				<p:commandButton value="validate"
+					actionListener="#{findC.validate()}" action="#{findC.goToResult()}" />
+			</p:panel>
+		</h:form>
+	</ui:define>
 </ui:composition>

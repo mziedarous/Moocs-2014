@@ -1,52 +1,30 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                	
-			<ui:define name="pageContent">
-			
-								
-			<h:form id="masterQ">
-		
-				<p:dataTable rendered="#{not empty quizBean.quizs}" 
-				             value="#{quizBean.quizs}" 
-				             var="qu" 
-				             rows="4"
-				             rowKey="#{qu.id}"
-				             paginator="true"
-				             paginatorPosition="bottom"
-				             filteredValue="#{quizBean.filtredQuiz}"
-				             selectionMode="single"
-				             selection="#{quizBean.quiz}"
-				             widgetVar="quizTabW">
-				 	<f:facet name="header">
-					        <h:outputText value="Please select quiz for #{quizBean.chapter.name}" />
-					</f:facet>
-					
-				<p:ajax event="rowSelect" listener="#{quizBean.onRowSelect3}" update=":masterQ" />		
-						
-					
-					<p:column headerText="Quiz">
-						<h:outputText value="#{qu.nameQuiz}" />
-					</p:column>
-					
-
-					
-
-
-			<f:facet name="footer">
-			
-			<p:commandButton value="Affect" action="#{quizBean.doAffectQuizToChapter()}" id="detailsQ" icon="ui-icon-script" disabled="#{quizBean.selected3}"/>
-			
-			</f:facet>
-			
-
-				</p:dataTable>
-			</h:form>
-			
-
-			</ui:define>		
-			
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageContent">
+		<h:form id="masterQ">
+			<p:dataTable rendered="#{not empty quizBean.quizs}"
+				value="#{quizBean.quizs}" var="qu" rows="4" rowKey="#{qu.id}"
+				paginator="true" paginatorPosition="bottom"
+				filteredValue="#{quizBean.filtredQuiz}" selectionMode="single"
+				selection="#{quizBean.quiz}" widgetVar="quizTabW">
+				<f:facet name="header">
+					<h:outputText
+						value="Please select quiz for #{quizBean.chapter.name}" />
+				</f:facet>
+				<p:ajax event="rowSelect" listener="#{quizBean.onRowSelect3}"
+					update=":masterQ" />
+				<p:column headerText="Quiz">
+					<h:outputText value="#{qu.nameQuiz}" />
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton value="Affect"
+						action="#{quizBean.doAffectQuizToChapter()}" id="detailsQ"
+						icon="ui-icon-script" disabled="#{quizBean.selected3}" />
+				</f:facet>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
 </ui:composition>
