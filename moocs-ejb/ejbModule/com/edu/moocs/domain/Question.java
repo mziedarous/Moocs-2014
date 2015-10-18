@@ -19,9 +19,7 @@ import javax.persistence.Table;
 @Table(name = "t_question")
 public class Question implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private int numQuestion;

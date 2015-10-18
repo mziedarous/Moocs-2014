@@ -23,9 +23,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "all-uses", query = "select u from User u")
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	// Users information
 	private int id; // User ID
@@ -38,7 +36,7 @@ public class User implements Serializable {
 	private String login;
 	private String password;
 	private boolean act;
-
+	//relationship attributes
 	private List<Comment> comments;
 
 	// default constructor

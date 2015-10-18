@@ -12,15 +12,11 @@ import javax.persistence.Table;
 @Table(name="t_validation")
 public class Validation implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	private Student student;
 	private Certification certification;
 	private int result;
-	
 	private Validation_pk pk;
 	
 	public Validation() {

@@ -19,15 +19,13 @@ import javax.persistence.Table;
 @Table(name = "t_quiz")
 public class Quiz implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private int duration;
 	private Date dateOfExam;
 	private String nameQuiz;
-
+	//relationship attributes
 	private Teacher teacher;
 	private List<Question> questions;
 	private Chapter chapter;

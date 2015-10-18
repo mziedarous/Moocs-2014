@@ -16,9 +16,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_thematic")
 public class Thematic implements Serializable {
-	/**
-	 * 
-	 */
+
+	
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nameThematic;

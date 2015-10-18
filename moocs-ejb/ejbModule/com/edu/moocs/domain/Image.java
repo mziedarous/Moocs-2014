@@ -10,9 +10,7 @@ import javax.persistence.Table;
 @Table(name = "t_image")
 public class Image extends Contain implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String titleImage;
 

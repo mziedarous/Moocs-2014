@@ -10,9 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_static_text")
 public class StaticText extends Contain implements Serializable {
-	/**
-	 * 
-	 */
+
+
 	private static final long serialVersionUID = 1L;
 	private String titleText;
 

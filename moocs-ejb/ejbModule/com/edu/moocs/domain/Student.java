@@ -16,18 +16,13 @@ import javax.persistence.OneToMany;
 @Entity
 public class Student extends User implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	// Student information
 	private String education;
-
 	// Relationship attributes
 	private List<Course> courses;
 	private List<NoteQuiz> noteQuizs;
-
 	private List<Validation> validations;
 
 	// Default constructor

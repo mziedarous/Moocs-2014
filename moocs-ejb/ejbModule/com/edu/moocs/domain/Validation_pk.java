@@ -8,9 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Validation_pk implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int studentId;
 	private int certificationId;

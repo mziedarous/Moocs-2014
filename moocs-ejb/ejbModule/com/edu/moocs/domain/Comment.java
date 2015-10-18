@@ -14,9 +14,7 @@ import javax.persistence.Table;
 @Table(name = "t_comment")
 public class Comment implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	private Course course;

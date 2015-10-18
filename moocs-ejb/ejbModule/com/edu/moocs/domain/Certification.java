@@ -16,9 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_certification")
 public class Certification implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private Date dateCertif;

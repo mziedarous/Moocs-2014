@@ -16,18 +16,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Teacher extends User implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	// teacher information
 	private String diploma;
-
 	// relationship attributes
 	private List<Course> courses;
 	private List<Quiz> quizs;
-
 	// default constructor
 	public Teacher() {
 	}

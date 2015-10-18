@@ -16,9 +16,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "all-contains", query = "select c from Contain c")
 public class Contain implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String typeContain;

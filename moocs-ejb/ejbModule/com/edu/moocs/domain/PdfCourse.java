@@ -12,14 +12,12 @@ import javax.persistence.Table;
 @Table(name = "t_Pdf_Course")
 public class PdfCourse implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private String PdfName;
-
+	//relationship attributes 
 	private Course course;
 
 	public PdfCourse() {

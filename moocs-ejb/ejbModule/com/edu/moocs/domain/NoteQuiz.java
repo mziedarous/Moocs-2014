@@ -12,14 +12,10 @@ import javax.persistence.Table;
 @Table(name = "t_Resultat_Quiz")
 public class NoteQuiz implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	private Student student;
 	private Quiz quiz;
-
 	private int note;
 	private NoteQuiz_pk pk;
 
