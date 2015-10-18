@@ -24,7 +24,7 @@ public class Teacher extends User implements Serializable {
 	// teacher information
 	private String diploma;
 
-	// relatioship attributes
+	// relationship attributes
 	private List<Course> courses;
 	private List<Quiz> quizs;
 

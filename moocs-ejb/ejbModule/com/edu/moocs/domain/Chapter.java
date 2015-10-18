@@ -29,7 +29,7 @@ public class Chapter implements Serializable {
 	private int id;
 	private String name;
 	private boolean hasQuiz;
-	// relationShip attribuates
+	// relationShip attributes
 
 	private Course course;
 	private Quiz quiz;

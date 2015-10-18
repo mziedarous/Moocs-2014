@@ -23,7 +23,7 @@ public class Thematic implements Serializable {
 	private int id;
 	private String nameThematic;
 
-	// relationships attributes
+	// relationship attributes
 	private List<Course> courses;
 	private Certification certification;
 

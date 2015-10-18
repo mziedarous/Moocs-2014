@@ -28,7 +28,7 @@ public class Question implements Serializable {
 	private String nameQuestion;
 	private String questionQuiz;
 
-	// realitionSphip attribues
+	// relationship attributes
 	private Quiz quiz;
 	private List<Answers> answers;
 	private Certification certification;

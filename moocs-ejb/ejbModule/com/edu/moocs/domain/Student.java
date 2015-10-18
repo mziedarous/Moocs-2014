@@ -24,7 +24,7 @@ public class Student extends User implements Serializable {
 	// Student information
 	private String education;
 
-	// RelationShip attributes
+	// Relationship attributes
 	private List<Course> courses;
 	private List<NoteQuiz> noteQuizs;
 

@@ -41,11 +41,11 @@ public class User implements Serializable {
 
 	private List<Comment> comments;
 
-	// default constructors
+	// default constructor
 	public User() {
 	}
 
-	// parameterized constructors
+	// parameterized constructor
 
 	public User(String firstName, String lastName, Long cin, Date dateOfBirth,
 			String sexe, String mail, String login, String password) {

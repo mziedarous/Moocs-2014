@@ -23,7 +23,7 @@ public class Contain implements Serializable {
 	private int id;
 	private String typeContain;
 
-	// relationShip attribute
+	// relationship attributes
 	private Chapter chapter;
 
 	public Contain() {
